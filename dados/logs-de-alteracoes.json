@@ -1,0 +1,776 @@
+[
+  {
+    "id": "40e58d67-cc66-4ce3-9f1f-7a43e5d3b87a",
+    "at": "2026-08-31T16:44:58.429Z",
+    "area": "Portal",
+    "summary": "5 alterações em portal",
+    "changes": [
+      {
+        "field": "Notícia ·  1 · título",
+        "before": "Tecnologia na sala de aula amplia as experiências de aprendizagem",
+        "after": "Mostra Tecnológica",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  1 · resumo",
+        "before": "Novas ferramentas digitais tornam as aulas ainda mais interativas e dinâmicas.",
+        "after": "Mostra tecnológica 2026, curso técnico em desenvolvimento de sistemas.",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  1 · data",
+        "before": "12/09/2024",
+        "after": "31/08/2026",
+        "images": []
+      },
+      {
+        "field": "Imagem ·  1 · foto de capa",
+        "before": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80",
+        "after": "imagens/uploads/heroimage-1788194650338-66ac1576.jpg",
+        "images": [
+          "imagens/uploads/heroimage-1788194650338-66ac1576.jpg"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · galeria de fotos",
+        "before": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80|EVENTOS https://images.unsplash.com/photo-153148261571…",
+        "after": "imagens/uploads/galleryimages-1788194659415-637e88b7.jpeg|EVENTOS imagens/uploads/galleryimages-1788194662972-6f2526ec.jpeg|EVENTOS imagens/uploads…",
+        "images": [
+          "imagens/uploads/galleryimages-1788194659415-637e88b7.jpeg",
+          "imagens/uploads/galleryimages-1788194662972-6f2526ec.jpeg",
+          "imagens/uploads/galleryimages-1788194666287-f9925b5f.jpeg",
+          "imagens/uploads/galleryimages-1788194672726-c71e195a.jpeg",
+          "imagens/uploads/galleryimages-1788194677676-1e59ff3a.jpeg",
+          "imagens/uploads/galleryimages-1788194681621-7352e176.jpeg"
+        ]
+      }
+    ],
+    "images": [
+      "imagens/uploads/heroimage-1788194650338-66ac1576.jpg",
+      "imagens/uploads/galleryimages-1788194659415-637e88b7.jpeg",
+      "imagens/uploads/galleryimages-1788194662972-6f2526ec.jpeg",
+      "imagens/uploads/galleryimages-1788194666287-f9925b5f.jpeg",
+      "imagens/uploads/galleryimages-1788194672726-c71e195a.jpeg",
+      "imagens/uploads/galleryimages-1788194677676-1e59ff3a.jpeg"
+    ]
+  },
+  {
+    "id": "ef3b672f-6f73-4f6c-b4d3-a6e166e0cda0",
+    "at": "2026-08-28T13:43:28.587Z",
+    "area": "Jogos",
+    "summary": "1 alteração em jogos",
+    "changes": [
+      {
+        "field": "Super Mario Quiz · className",
+        "before": "9A",
+        "after": "1TEC",
+        "images": []
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "e97523d2-6c98-44b5-81b4-bbc7351304d2",
+    "at": "2026-08-28T13:41:16.818Z",
+    "area": "Jogos",
+    "summary": "2 alterações em jogos",
+    "changes": [
+      {
+        "field": "Super Mario Quiz · author",
+        "before": "Alunos",
+        "after": "Luciano",
+        "images": []
+      },
+      {
+        "field": "Super Mario Quiz · image",
+        "before": "(vazio)",
+        "after": "imagens/uploads/game-image-1787924467207-d332f88e.webp",
+        "images": [
+          "imagens/uploads/game-image-1787924467207-d332f88e.webp"
+        ]
+      }
+    ],
+    "images": [
+      "imagens/uploads/game-image-1787924467207-d332f88e.webp"
+    ]
+  },
+  {
+    "id": "446efb49-41d9-4a95-8112-e85930553f9d",
+    "at": "2026-08-28T13:41:00.962Z",
+    "area": "Jogos",
+    "summary": "6 alterações em jogos",
+    "changes": [
+      {
+        "field": "Super Mario Quiz · title",
+        "before": "Novo jogo",
+        "after": "Super Mario Quiz",
+        "images": []
+      },
+      {
+        "field": "Super Mario Quiz · subject",
+        "before": "Projeto",
+        "after": "(vazio)",
+        "images": []
+      },
+      {
+        "field": "Super Mario Quiz · author",
+        "before": "Aluno",
+        "after": "Alunos",
+        "images": []
+      },
+      {
+        "field": "Super Mario Quiz · tags",
+        "before": "#novo",
+        "after": "(vazio)",
+        "images": []
+      },
+      {
+        "field": "Super Mario Quiz · url",
+        "before": "(vazio)",
+        "after": "http://localhost:5500/jogos/Super%20Mario%20Quiz/index.html",
+        "images": []
+      },
+      {
+        "field": "Jogo removido",
+        "before": "Super Mario Quiz",
+        "after": "(removido)"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "b7803fd9-9d23-48af-bfbe-dbb855a5d605",
+    "at": "2026-08-28T13:33:02.939Z",
+    "area": "Jogos",
+    "summary": "1 alteração em jogos",
+    "changes": [
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Novo jogo"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "24f10cf3-0311-453c-a0d7-dd160c567f72",
+    "at": "2026-08-27T12:37:27.517Z",
+    "area": "Portal",
+    "summary": "1 alteração em portal",
+    "changes": [
+      {
+        "field": "tralhaTv ·  1 · members",
+        "before": "Annabelly|imagens/uploads/tralha-tv/annabelly-logo.jpeg Maria|imagens/uploads/tralha-tv/tralha-tv-encerramento-01.jpeg Lyra|imagens/uploads/tralha-…",
+        "after": "AnjMelly|imagens/uploads/tralha-tv/annabelly-logo.jpeg Gabi|imagens/uploads/tralha-tv/tralha-tv-encerramento-01.jpeg Lyra|imagens/uploads/tralha-tv…",
+        "images": []
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "15c387ab-bb6e-45dc-918b-f628e80cf0cf",
+    "at": "2026-08-24T15:09:31.684Z",
+    "area": "Jogos",
+    "summary": "1 alteração em jogos",
+    "changes": [
+      {
+        "field": "Jogo removido",
+        "before": "Novo jogo",
+        "after": "(removido)"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "2197292d-a2e4-4be4-89e9-023a10726875",
+    "at": "2026-08-24T15:09:27.232Z",
+    "area": "Jogos",
+    "summary": "1 alteração em jogos",
+    "changes": [
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Novo jogo"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "8ff93063-12c8-4e0f-9b6d-36fad0c6ff9f",
+    "at": "2026-08-24T15:01:06.818Z",
+    "area": "Jogos",
+    "summary": "1 alteração em jogos",
+    "changes": [
+      {
+        "field": "Edu Fighters · image",
+        "before": "(vazio)",
+        "after": "imagens/uploads/game-image-1787583665201-1b0b5cc9.png",
+        "images": [
+          "imagens/uploads/game-image-1787583665201-1b0b5cc9.png"
+        ]
+      }
+    ],
+    "images": [
+      "imagens/uploads/game-image-1787583665201-1b0b5cc9.png"
+    ]
+  },
+  {
+    "id": "b658f642-4457-4b62-b608-21c9532107f5",
+    "at": "2026-08-24T14:46:28.001Z",
+    "area": "Jogos",
+    "summary": "5 alterações em jogos",
+    "changes": [
+      {
+        "field": "Edu Fighters · title",
+        "before": "Novo jogo",
+        "after": "Edu Fighters",
+        "images": []
+      },
+      {
+        "field": "Edu Fighters · subject",
+        "before": "Projeto",
+        "after": "Educação Digital",
+        "images": []
+      },
+      {
+        "field": "Edu Fighters · className",
+        "before": "9A",
+        "after": "1TEC",
+        "images": []
+      },
+      {
+        "field": "Edu Fighters · author",
+        "before": "Aluno",
+        "after": "Pedro Lucas",
+        "images": []
+      },
+      {
+        "field": "Edu Fighters · tags",
+        "before": "#novo",
+        "after": "(vazio)",
+        "images": []
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "84f9f186-3c97-48e7-a2ef-ac8dc13f31a0",
+    "at": "2026-08-24T14:45:55.615Z",
+    "area": "Jogos",
+    "summary": "1 alteração em jogos",
+    "changes": [
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Novo jogo"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "a07c291a-af63-47b7-a541-d0fdd9258be6",
+    "at": "2026-08-24T14:24:36.992Z",
+    "area": "Jogos",
+    "summary": "6 alterações em jogos",
+    "changes": [
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Edu fighter"
+      },
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Cyber Code"
+      },
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Math Runner"
+      },
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "História Viva"
+      },
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Space Algo"
+      },
+      {
+        "field": "Jogo criado",
+        "before": "(não existia)",
+        "after": "Química Fun"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "911b6887-7586-4194-ac26-2f501e6d7122",
+    "at": "2026-08-24T01:58:14.809Z",
+    "area": "Portal",
+    "summary": "10 alteraçãoões em portal",
+    "changes": [
+      {
+        "field": "Imagem ·  1 · foto da história",
+        "before": "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80",
+        "after": "imagens/uploads/historyphoto-1787536687600-17aa3c9e.webp",
+        "images": [
+          "imagens/uploads/historyphoto-1787536687600-17aa3c9e.webp"
+        ]
+      },
+      {
+        "field": "history ·  1 · eyebrow",
+        "before": "(vazio)",
+        "after": "MEMÓRIA E IDENTIDADE",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · título",
+        "before": "(vazio)",
+        "after": "História do Moysés Lupion",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · descrição",
+        "before": "(vazio)",
+        "after": "Fundado em 31 de agosto de 1946, o Colégio Estadual Moysés Lupion nasceu como Ginásio Municipal de Antonina e iniciou suas atividades em 1947. Desd…",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · item1Label",
+        "before": "(vazio)",
+        "after": "HISTÓRIA",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · item1Text",
+        "before": "(vazio)",
+        "after": "Uma trajetória construída ao longo de décadas, marcada pela educação e pela formação de gerações de antoninenses.",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · item2Label",
+        "before": "(vazio)",
+        "after": "COMUNIDADE",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · item2Text",
+        "before": "(vazio)",
+        "after": "Um colégio feito por pessoas: estudantes, professores, funcionários, famílias e todos que fazem parte dessa história.",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · item3Label",
+        "before": "(vazio)",
+        "after": "FUTURO",
+        "images": []
+      },
+      {
+        "field": "history ·  1 · item3Text",
+        "before": "(vazio)",
+        "after": "Preservar a memória, valorizar o presente e preparar novas gerações para os desafios do futuro.",
+        "images": []
+      }
+    ],
+    "images": [
+      "imagens/uploads/historyphoto-1787536687600-17aa3c9e.webp"
+    ]
+  },
+  {
+    "id": "eb54beef-7207-421d-91ff-f973d9d894c2",
+    "at": "2026-08-23T22:43:52.692Z",
+    "area": "Portal",
+    "summary": "60 alteraçãoões em portal",
+    "changes": [
+      {
+        "field": "Notícia ·  1 · título",
+        "before": "(vazio)",
+        "after": "Tecnologia na sala de aula amplia as experiências de aprendizagem",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  1 · resumo",
+        "before": "(vazio)",
+        "after": "Novas ferramentas digitais tornam as aulas ainda mais interativas e dinâmicas.",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  1 · categoria",
+        "before": "(vazio)",
+        "after": "TECNOLOGIA",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  1 · data",
+        "before": "(vazio)",
+        "after": "12/09/2024",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  2 · título",
+        "before": "(vazio)",
+        "after": "Festival cultural celebra talentos da comunidade escolar",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  2 · resumo",
+        "before": "(vazio)",
+        "after": "Alunos se preparam para uma tarde especial de música, dança e arte.",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  2 · categoria",
+        "before": "(vazio)",
+        "after": "CULTURA",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  2 · data",
+        "before": "(vazio)",
+        "after": "10/09/2024",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  3 · título",
+        "before": "(vazio)",
+        "after": "Colégio conquista destaque no campeonato municipal",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  3 · resumo",
+        "before": "(vazio)",
+        "after": "Nossas equipes representaram a escola com muita dedicação e vitórias.",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  3 · categoria",
+        "before": "(vazio)",
+        "after": "ESPORTES",
+        "images": []
+      },
+      {
+        "field": "Notícia ·  3 · data",
+        "before": "(vazio)",
+        "after": "08/09/2024",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  1 · tipo",
+        "before": "(vazio)",
+        "after": "URGENTE",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  1 · título",
+        "before": "(vazio)",
+        "after": "Reunião de responsáveis do Ensino Fundamental",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  1 · descrição",
+        "before": "(vazio)",
+        "after": "Dia 20 de setembro, às 18h30, no auditório principal.",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  2 · tipo",
+        "before": "(vazio)",
+        "after": "INFORMATIVO",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  2 · título",
+        "before": "(vazio)",
+        "after": "Entrega dos boletins do segundo trimestre",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  2 · descrição",
+        "before": "(vazio)",
+        "after": "Os boletins estarão disponíveis a partir de 25 de setembro.",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  3 · tipo",
+        "before": "(vazio)",
+        "after": "INFORMATIVO",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  3 · título",
+        "before": "(vazio)",
+        "after": "Inscrições para atividades extracurriculares",
+        "images": []
+      },
+      {
+        "field": "Comunicado ·  3 · descrição",
+        "before": "(vazio)",
+        "after": "Inscrições abertas até o dia 27 de setembro.",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  1 · dia",
+        "before": "(vazio)",
+        "after": "SEGUNDA",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  1 · prato principal",
+        "before": "(vazio)",
+        "after": "Arroz, feijão e frango",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  1 · café da manhã",
+        "before": "(vazio)",
+        "after": "Pão e fruta",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  1 · almoço",
+        "before": "(vazio)",
+        "after": "Salada e frango",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  1 · lanche",
+        "before": "(vazio)",
+        "after": "Bolo de milho",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  2 · dia",
+        "before": "(vazio)",
+        "after": "TERÇA",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  2 · prato principal",
+        "before": "(vazio)",
+        "after": "Macarrão à bolonhesa",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  2 · café da manhã",
+        "before": "(vazio)",
+        "after": "Leite e biscoito",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  2 · almoço",
+        "before": "(vazio)",
+        "after": "Macarrão e legumes",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  2 · lanche",
+        "before": "(vazio)",
+        "after": "Sanduíche",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  3 · dia",
+        "before": "(vazio)",
+        "after": "QUARTA",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  3 · prato principal",
+        "before": "(vazio)",
+        "after": "Arroz, feijão e peixe",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  3 · café da manhã",
+        "before": "(vazio)",
+        "after": "Iogurte e fruta",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  3 · almoço",
+        "before": "(vazio)",
+        "after": "Peixe e purê",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  3 · lanche",
+        "before": "(vazio)",
+        "after": "Vitamina",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  4 · dia",
+        "before": "(vazio)",
+        "after": "QUINTA",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  4 · prato principal",
+        "before": "(vazio)",
+        "after": "Arroz colorido",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  4 · café da manhã",
+        "before": "(vazio)",
+        "after": "Pão com queijo",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  4 · almoço",
+        "before": "(vazio)",
+        "after": "Arroz e carne",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  4 · lanche",
+        "before": "(vazio)",
+        "after": "Frutas",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  5 · dia",
+        "before": "(vazio)",
+        "after": "SEXTA",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  5 · prato principal",
+        "before": "(vazio)",
+        "after": "Feijoada",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  5 · café da manhã",
+        "before": "(vazio)",
+        "after": "Pão e café",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  5 · almoço",
+        "before": "(vazio)",
+        "after": "Feijoada completa",
+        "images": []
+      },
+      {
+        "field": "Cardápio ·  5 · lanche",
+        "before": "(vazio)",
+        "after": "Doce",
+        "images": []
+      },
+      {
+        "field": "Configurações ·  1 · título do portal",
+        "before": "(vazio)",
+        "after": "ML News - Portal Escolar",
+        "images": []
+      },
+      {
+        "field": "Configurações ·  1 · slogan",
+        "before": "(vazio)",
+        "after": "Informação, educação e comunidade",
+        "images": []
+      },
+      {
+        "field": "Configurações ·  1 · descrição do portal",
+        "before": "(vazio)",
+        "after": "O canal oficial do Colégio Estadual Moysés Lupion para estudantes, famílias, professores e toda a comunidade.",
+        "images": []
+      },
+      {
+        "field": "Contato ·  1 · endereço",
+        "before": "(vazio)",
+        "after": "Avenida Conde Matarazzo, 980, Antonina, Paraná, 83370-000",
+        "images": []
+      },
+      {
+        "field": "Contato ·  1 · telefone",
+        "before": "(vazio)",
+        "after": "(41) 3432-1117",
+        "images": []
+      },
+      {
+        "field": "Contato ·  1 · e-mail",
+        "before": "(vazio)",
+        "after": "aonmoyseslupion@escola.pr.gov.br",
+        "images": []
+      },
+      {
+        "field": "Contato ·  1 · horário",
+        "before": "(vazio)",
+        "after": "Segunda a sexta, 7h às 18h",
+        "images": []
+      },
+      {
+        "field": "Imagem ·  1 · logo",
+        "before": "(vazio)",
+        "after": "imagens/logo-ml-news.png",
+        "images": [
+          "imagens/logo-ml-news.png"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · emblema",
+        "before": "(vazio)",
+        "after": "imagens/emblema-ccm.jpg",
+        "images": [
+          "imagens/emblema-ccm.jpg"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · foto de capa",
+        "before": "(vazio)",
+        "after": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80",
+        "images": [
+          "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · foto da escola",
+        "before": "(vazio)",
+        "after": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80",
+        "images": [
+          "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · foto da história",
+        "before": "(vazio)",
+        "after": "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80",
+        "images": [
+          "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · fotos das notícias",
+        "before": "(vazio)",
+        "after": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80 https://images.unsplash.com/photo-1513364776144-60967b…",
+        "images": [
+          "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=700&q=80"
+        ]
+      },
+      {
+        "field": "Imagem ·  1 · galeria de fotos",
+        "before": "(vazio)",
+        "after": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80|EVENTOS https://images.unsplash.com/photo-153148261571…",
+        "images": [
+          "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80"
+        ]
+      }
+    ],
+    "images": [
+      "imagens/logo-ml-news.png",
+      "imagens/emblema-ccm.jpg",
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+    ]
+  }
+]

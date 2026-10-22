@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Edu Fighters",
+    "subject": "Educação Digital",
+    "className": "1TEC",
+    "author": "Pedro Lucas",
+    "tags": "",
+    "plays": 18,
+    "url": "/jogos/Edu%20Fighters/index.html",
+    "image": "imagens/uploads/game-image-1787583665201-1b0b5cc9.png",
+    "id": "0a8c79a3-cc33-4f07-aaf4-c2aa386cb473"
+  },
+  {
+    "title": "Super Mario Quiz",
+    "className": "1TEC",
+    "author": "Luciano",
+    "plays": 2,
+    "url": "/jogos/Super%20Mario%20Quiz/index.html",
+    "image": "imagens/uploads/game-image-1787924467207-d332f88e.webp",
+    "id": "super-mario-quiz"
+  }
+]

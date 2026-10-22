@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Exposicao de jogos criados pelos alunos do Colegio Estadual Moyses Lupion." />
+  <link rel="icon" type="image/png" href="imagens/logo-ml-news.png" />
+  <title>Jogos dos Alunos | ML News</title>
+  <style>
+    :root { --navy:#081525; --panel:#12243a; --cyan:#55d9f5; --red:#e50914; --gold:#f8c95d; --muted:#8aa0b3; --line:rgba(123,155,187,.25); --white:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f4f7fb; color:#16283b; font-family:Inter,Arial,sans-serif; transition:background .2s ease,color .2s ease; }
+    body.dark { background:#0b1420; color:#e8f1f8; }
+    button,input,select { font:inherit; }
+    button { cursor:pointer; }
+    .games-header { position:sticky; top:0; z-index:10; background:rgba(8,21,37,.96); color:var(--white); border-bottom:1px solid var(--line); }
+    .header-inner,.page-inner { width:min(1180px,92%); margin:auto; }
+    .header-inner { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none; font-weight:800; letter-spacing:.08em; }
+    .brand img { width:58px; height:58px; object-fit:contain; }
+    .brand img + img { width:52px; height:52px; padding-left:12px; border-left:1px solid rgba(255,255,255,.18); border-radius:0; }
+    .institution { padding-left:16px; margin-right:auto; border-left:1px solid rgba(255,255,255,.14); line-height:1.05; }
+    .institution strong { display:block; font:800 15px/1.05 "Barlow Condensed",sans-serif; letter-spacing:1px; }
+    .institution small { display:block; margin-top:6px; color:var(--muted); font-size:9px; letter-spacing:2px; }
+    .back-link { color:var(--cyan); text-decoration:none; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+    .hero { padding:70px 0; background:linear-gradient(135deg,#081525,#173451); color:var(--white); }
+    .hero-grid { display:grid; grid-template-columns:1.5fr 1fr; gap:36px; align-items:center; }
+    .eyebrow { color:var(--cyan); font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+    h1,h2,h3 { font-family:"Barlow Condensed",Inter,sans-serif; text-transform:uppercase; }
+    h1 { max-width:700px; margin:16px 0; font-size:clamp(48px,7vw,88px); line-height:.9; }
+    h1 span { color:var(--cyan); }
+    .hero p { max-width:620px; color:#c7d5e3; line-height:1.7; }
+    .counters { display:flex; gap:28px; margin-top:28px; }
+    .counter strong { display:block; color:var(--gold); font-size:30px; }
+    .counter span { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.1em; }
+    .search-box { padding:24px; border:1px solid var(--line); border-radius:12px; background:rgba(18,36,58,.9); }
+    .search-box h2 { margin-top:0; font-size:28px; }
+    .search-box input { width:100%; padding:14px; border:1px solid var(--line); border-radius:8px; background:#081525; color:var(--white); }
+    .shortcuts,.filters { display:flex; flex-wrap:wrap; gap:8px; }
+    .shortcut,.filter { padding:9px 12px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--muted); }
+    .shortcut:hover,.filter.active,.filter:hover { border-color:var(--cyan); background:var(--cyan); color:#081525; }
+    .toolbar { position:sticky; top:76px; z-index:5; padding:16px 0; background:#f4f7fb; border-bottom:1px solid #dce4ed; }
+    .toolbar-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .sort { padding:10px 12px; border:1px solid #c9d5e1; border-radius:8px; background:#fff; }
+    main { padding:36px 0 60px; }
+    .section-heading { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:22px; }
+    .section-heading h2 { margin:0; font-size:34px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { overflow:hidden; display:flex; flex-direction:column; border:1px solid #dce4ed; border-radius:10px; background:#fff; box-shadow:0 10px 24px rgba(8,21,37,.07); }
+    .card-media { position:relative; height:210px; overflow:hidden; background-color:#fff; background-position:center; background-size:contain; background-repeat:no-repeat; }
+    .card-media::before { content:""; position:absolute; inset:-14px; z-index:0; background:inherit; background-size:cover; background-position:center; filter:blur(14px); opacity:.58; transform:scale(1.08); }
+    .card-media::after { content:""; position:absolute; inset:auto 0 0; z-index:1; height:38%; background:linear-gradient(transparent,#fff); pointer-events:none; }
+    .card-body { display:flex; flex:1; flex-direction:column; padding:20px; }
+    .badges { display:flex; gap:7px; flex-wrap:wrap; }
+    .badge { padding:5px 8px; border-radius:5px; background:#e8faff; color:#08778b; font-size:10px; font-weight:800; text-transform:uppercase; }
+    .badge.turma { background:#eaf0ff; color:#2453a6; }
+    .card h3 { margin:14px 0 8px; font-size:28px; }
+    .card p { color:#657688; font-size:13px; line-height:1.6; }
+    .tags { margin:12px 0; color:#08778b; font-size:12px; }
+    .author { margin-top:auto; padding:14px 0; color:#657688; font-size:13px; }
+    .play { width:100%; padding:12px; border:1px solid var(--navy); border-radius:7px; background:#fff; color:var(--navy); font-weight:800; }
+    .play:hover { background:var(--cyan); border-color:var(--cyan); }
+    .empty { grid-column:1/-1; padding:40px; text-align:center; color:#657688; }
+    body.dark .toolbar { background:#0b1420; border-color:#26394b; }
+    body.dark .sort,body.dark .card,body.dark .play { background:#142333; color:#e8f1f8; border-color:#385166; }
+    body.dark .card-media { background-color:#142333; }
+    body.dark .card-media::after { background:linear-gradient(transparent,#142333); }
+    body.dark .card-media::before { opacity:.42; }
+    body.dark .card p,body.dark .author,body.dark .empty,body.dark .modal-card p { color:#a8bac8; }
+    body.dark .modal-card { background:#142333; }
+    .theme-toggle { padding:9px 11px; border:1px solid rgba(255,255,255,.2); border-radius:7px; background:transparent; color:var(--white); font-weight:800; }
+    .studio { margin:36px auto 0; padding:28px; border:1px solid var(--line); border-radius:12px; background:var(--navy); color:var(--white); box-shadow:0 18px 40px rgba(8,21,37,.18); }
+    .studio-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:22px; }
+    .studio-header h2 { margin:6px 0; font-size:34px; }
+    .studio-header p { margin:0; color:var(--muted); font-size:13px; }
+    .studio-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .studio-button { padding:10px 14px; border:1px solid rgba(85,217,245,.35); border-radius:7px; background:rgba(85,217,245,.12); color:var(--cyan); font-weight:800; }
+    .studio-button.primary { border-color:transparent; background:linear-gradient(135deg,var(--red),#9e0010); color:var(--white); }
+    .studio-meta { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:12px; margin-bottom:16px; }
+    .studio label { display:block; margin:0 0 6px; color:var(--muted); font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .studio input,.studio select { width:100%; padding:11px; border:1px solid var(--line); border-radius:7px; background:#06101e; color:var(--white); }
+    .code-layout { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .code-editor { display:grid; gap:8px; }
+    .code-editor textarea { width:100%; min-height:210px; padding:14px; resize:vertical; border:1px solid var(--line); border-radius:7px; background:#020811; color:#d9f4ff; font:12px/1.55 Consolas,monospace; tab-size:2; }
+    .preview-panel { overflow:hidden; border:1px solid var(--line); border-radius:8px; background:#fff; }
+    .preview-panel iframe { display:block; width:100%; min-height:450px; border:0; background:#fff; }
+    .studio-status { min-height:18px; margin-top:10px; color:#74e2aa; font-size:12px; }
+    .card-tools { display:flex; gap:8px; margin-top:8px; }
+    .card-tools .play { flex:1; }
+    .edit-game { padding:10px; border:1px solid #c9d5e1; border-radius:7px; background:#fff; color:var(--navy); font-weight:800; }
+    @media (max-width:850px) { .studio-meta,.code-layout { grid-template-columns:1fr 1fr; } }
+    @media (max-width:600px) { .studio { padding:20px; } .studio-header,.studio-meta,.code-layout { grid-template-columns:1fr; flex-direction:column; } .studio-actions { width:100%; } .studio-button { flex:1; } }
+    .modal { position:fixed; inset:0; z-index:20; display:none; place-items:center; padding:20px; background:rgba(8,21,37,.92); }
+    .modal.open { display:grid; }
+    .modal-card { width:min(1100px,100%); height:min(92vh,820px); position:relative; display:flex; flex-direction:column; padding:26px; border-radius:12px; background:#fff; }
+    .modal-actions { display:flex; justify-content:flex-end; gap:8px; margin:-4px 42px 10px 0; }
+    .fullscreen-toggle { padding:8px 12px; border:1px solid #c9d5e1; border-radius:7px; background:#fff; color:var(--navy); font-weight:800; }
+    .fullscreen-toggle:hover { background:var(--cyan); border-color:var(--cyan); }
+    .modal-card:fullscreen { width:100vw; height:100vh; max-width:none; border-radius:0; }
+    .modal-card:fullscreen .game-frame { min-height:0; }
+    .modal-card h2 { margin:8px 0 4px; color:var(--navy); }
+    .modal-card p { margin:0 0 14px; color:#657688; font-size:13px; }
+    .game-frame { display:block; flex:1; width:100%; min-height:0; border:1px solid #dce4ed; border-radius:8px; background:#fff; }
+    .close { position:absolute; top:10px; right:14px; border:0; background:none; color:#657688; font-size:26px; }
+    footer { padding:28px; background:var(--navy); color:#b8c7d5; text-align:center; font-size:12px; }
+    @media (max-width:850px) { .hero-grid,.grid { grid-template-columns:1fr 1fr; } .hero-grid { grid-template-columns:1fr; } }
+    @media (max-width:600px) { .header-inner,.toolbar-inner,.section-heading { align-items:flex-start; flex-direction:column; } .toolbar { position:static; } .grid { grid-template-columns:1fr; } .back-link { align-self:flex-end; } }
+  </style>
+</head>
+<body>
+  <header class="games-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><img src="imagens/logo-ml-news.png" alt="Logo ML News" /><img src="imagens/emblema-ccm.jpg" alt="Emblema do Colégio Cívico-Militar" /><span>ML NEWS · JOGOS</span></a>
+      <div class="institution" aria-label="Nome da instituição"><strong>COLÉGIO ESTADUAL CÍVICO-MILITAR<br />MOYSÉS LUPION</strong><small>ANTONINA · PARANÁ</small></div>
+      <a class="back-link" href="index.html">Voltar ao portal</a>
+      <a class="back-link" href="adm-jg.html">Administração</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Ativar modo claro">Modo claro</button>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="page-inner hero-grid">
+      <div>
+        <span class="eyebrow">Galeria · 2026</span>
+        <h1>Jogos criados <span>pelos alunos</span></h1>
+        <p>Explore as producoes interativas desenvolvidas pelos alunos do Colegio Estadual Moyses Lupion.</p>
+        <div class="counters"><div class="counter"><strong id="count-games">0</strong><span>Jogos publicados</span></div><div class="counter"><strong id="count-authors">0</strong><span>Autores</span></div><div class="counter"><strong id="count-plays">0</strong><span>Partidas neste navegador</span></div></div>
+      </div>
+      <div class="search-box"><h2>Buscar projeto</h2><input id="search" type="search" placeholder="Titulo, turma ou autor" aria-label="Buscar projeto" /><p>Atalhos rapidos</p><div class="shortcuts"><button class="shortcut" data-class="9A">9A</button><button class="shortcut" data-class="3TEC">3TEC</button><button class="shortcut" data-class="2NEM">2NEM</button><button class="shortcut" data-class="1TEC">1TEC</button></div></div>
+    </div>
+  </section>
+  <div class="toolbar"><div class="page-inner toolbar-inner"><div class="filters"><button class="filter active" data-class="Todas">Todas</button><button class="filter" data-class="6A">6A</button><button class="filter" data-class="7A">7A</button><button class="filter" data-class="8A">8A</button><button class="filter" data-class="9A">9A</button><button class="filter" data-class="1NEM">1NEM</button><button class="filter" data-class="2NEM">2NEM</button><button class="filter" data-class="3NEM">3NEM</button><button class="filter" data-class="1TEC">1TEC</button><button class="filter" data-class="2TEC">2TEC</button><button class="filter" data-class="3TEC">3TEC</button></div><select class="sort" id="sort" aria-label="Ordenar jogos"><option value="plays">Mais jogados</option><option value="az">A-Z</option></select></div></div>
+  <main class="page-inner"><div class="section-heading"><h2>Turma: <span id="active-class">Todas</span> (<span id="total">0</span>)</h2></div><div class="grid" id="games"></div></main>
+  <footer>Colégio Estadual Moysés Lupion · Laboratório de Informática</footer>
+  <div class="modal" id="modal"><div class="modal-card" id="modal-card"><button class="close" id="close" aria-label="Fechar">×</button><span class="eyebrow">Jogo em execução</span><h2 id="modal-title"></h2><p id="modal-text"></p><div class="modal-actions"><button id="fullscreen-toggle" class="fullscreen-toggle" type="button">Tela cheia</button></div><iframe id="game-frame" class="game-frame" title="Jogo"></iframe></div></div>
+  <script>
+    const defaultGames = [
+      { title:"Eco Quest", subject:"Biologia", className:"9A", plays:0, author:"Lucas R.", image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80", tags:"#natureza #quiz" },
+      { title:"Cyber Code", subject:"Programação", className:"3TEC", plays:0, author:"Beatriz M.", image:"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80", tags:"#logica #tech" },
+      { title:"Math Runner", subject:"Matemática", className:"1NEM", plays:0, author:"Gabriel T.", image:"https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=700&q=80", tags:"#runner #math" },
+      { title:"História Viva", subject:"História", className:"2NEM", plays:0, author:"Carla S.", image:"https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=700&q=80", tags:"#rpg #historia" },
+      { title:"Space Algo", subject:"Robótica", className:"1TEC", plays:0, author:"Enzo P.", image:"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=700&q=80", tags:"#space #code" },
+      { title:"Química Fun", subject:"Química", className:"2TEC", plays:0, author:"Juliana K.", image:"https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=700&q=80", tags:"#lab #elementos" }
+    ];
+    const GAMES_KEY = "mlnewsStudentGames";
+    const theme = localStorage.getItem("mlnewsGamesTheme"); if (theme !== "light") document.body.classList.add("dark");
+    const starterCode = { html:"<main><h1>Meu jogo</h1><button id='start'>Começar</button><p id='message'></p></main>", css:"body{margin:0;display:grid;place-items:center;min-height:100vh;background:#081525;color:white;font-family:sans-serif}main{text-align:center}button{padding:12px 18px;border:0;border-radius:8px;background:#55d9f5;color:#081525;font-weight:bold}", js:"document.querySelector('#start').onclick=()=>document.querySelector('#message').textContent='Jogo iniciado!';" };
+    let savedGames = null;
+    try { savedGames = JSON.parse(localStorage.getItem(GAMES_KEY) || "null"); } catch { localStorage.removeItem(GAMES_KEY); }
+    let games = [];
+    localStorage.setItem(GAMES_KEY, JSON.stringify(games));
+    if (localStorage.getItem("mlnewsGamesRealCounters") !== "1") { games.forEach(game => { game.plays = 0; }); localStorage.setItem("mlnewsGamesRealCounters", "1"); localStorage.setItem(GAMES_KEY, JSON.stringify(games)); }
+    games.forEach(game => { game.plays = Number.isFinite(game.plays) ? game.plays : 0; game.html ||= starterCode.html; game.css ||= starterCode.css; game.js ||= starterCode.js; });
+    let activeClass = "Todas", term = "", order = "plays";
+    const $ = selector => document.querySelector(selector);
+    const themeToggle = $("#theme-toggle");
+    function updateThemeToggle() { const dark = document.body.classList.contains("dark"); themeToggle.textContent = dark ? "Modo claro" : "Modo escuro"; themeToggle.setAttribute("aria-label", dark ? "Ativar modo claro" : "Ativar modo escuro"); }
+    const format = value => new Intl.NumberFormat("pt-BR").format(value);
+    function render() {
+      const query = term.trim().toLowerCase();
+      let visible = games.filter(game => (activeClass === "Todas" || game.className === activeClass) && (!query || [game.title, game.author, game.className].some(value => String(value || "").toLowerCase().includes(query))));
+      visible.sort((a, b) => order === "az" ? a.title.localeCompare(b.title, "pt-BR") : b.plays - a.plays);
+      $("#active-class").textContent = activeClass; $("#total").textContent = visible.length;
+      $("#games").innerHTML = visible.length ? visible.map((game) => `<article class="card"><div class="card-media" style="background-image:url('${game.image || ""}')"></div><div class="card-body"><div class="badges"><span class="badge turma">${game.className}</span></div><h3>${game.title}</h3><div class="author">Autor: <strong>${game.author}</strong> · ${format(game.plays || 0)} partidas</div><button class="play" data-game="${games.indexOf(game)}">Ver projeto</button></div></article>`).join("") : '<div class="empty">Nenhum projeto encontrado para os filtros selecionados.</div>';
+    }
+    function gameDocument(game) { const html = game.html || starterCode.html; const css = game.css || starterCode.css; const js = (game.js || starterCode.js).replace(/<\/script/gi, "<\\/script"); const styles = `<style>${css}</style>`; const script = `<script>${js}<\/script>`; if (/<html[\s>]/i.test(html) || /<!doctype/i.test(html)) { let documentHtml = html; documentHtml = documentHtml.replace(/<head([^>]*)>/i, `<head$1><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">${styles}`); if (!/<head[\s>]/i.test(documentHtml)) documentHtml = documentHtml.replace(/<html([^>]*)>/i, `<html$1><head>${styles}</head>`); if (/<\/body>/i.test(documentHtml)) return documentHtml.replace(/<\/body>/i, `${script}</body>`); return `${documentHtml}${script}`; } return `<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">${styles}</head><body>${html}${script}</body></html>`; }
+    async function openGame(index) { const game = games[index]; if (!game) return; game.plays = (game.plays || 0) + 1; $("#modal-title").textContent = game.title; $("#modal-text").textContent = `${game.author} · ${format(game.plays)} partida(s) nesta sessão`; if (game.url) { $("#game-frame").removeAttribute("srcdoc"); $("#game-frame").src = game.url; } $("#modal").classList.add("open"); updateCounters(); render(); try { const response = await fetch(`/api/games/${encodeURIComponent(game.id)}/play`, { method: "POST" }); if (response.ok) { const payload = await response.json(); game.plays = payload.plays; $("#modal-text").textContent = `${game.author} · ${format(game.plays)} partida(s) nesta sessão`; updateCounters(); render(); } } catch {}
+    }
+    document.addEventListener("click", event => { const filter = event.target.closest("[data-class]"); if (filter) { activeClass = filter.dataset.class; document.querySelectorAll(".filter").forEach(item => item.classList.toggle("active", item.dataset.class === activeClass)); render(); } const play = event.target.closest("[data-game]"); if (play) openGame(Number(play.dataset.game)); });
+    function exitFullscreen(){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});$("#fullscreen-toggle").textContent="Tela cheia"}
+    function closeGame(){exitFullscreen();$("#modal").classList.remove("open");$("#game-frame").src="";$("#game-frame").srcdoc=""}
+    $("#search").addEventListener("input", event => { term = event.target.value; render(); }); $("#sort").addEventListener("change", event => { order = event.target.value; render(); }); $("#close").addEventListener("click", closeGame); $("#modal").addEventListener("click", event => { if (event.target.id === "modal") closeGame(); }); themeToggle.addEventListener("click", () => { const dark = document.body.classList.toggle("dark"); localStorage.setItem("mlnewsGamesTheme", dark ? "dark" : "light"); updateThemeToggle(); }); $("#fullscreen-toggle").addEventListener("click", () => { if(document.fullscreenElement) exitFullscreen(); else $("#modal-card").requestFullscreen().catch(()=>{}); }); document.addEventListener("fullscreenchange", () => { $("#fullscreen-toggle").textContent=document.fullscreenElement ? "Sair da tela cheia" : "Tela cheia"; });
+    function updateCounters() { $("#count-games").textContent = games.length; $("#count-authors").textContent = new Set(games.map(game => game.author)).size; $("#count-plays").textContent = format(games.reduce((sum, game) => sum + (game.plays || 0), 0)); }
+    async function loadSharedGames() { try { const response = await fetch("/api/games", { cache: "no-store" }); if (!response.ok) return; const payload = await response.json(); if (!Array.isArray(payload.games)) return; games = payload.games; games.forEach(game => { game.plays = Number.isFinite(game.plays) ? game.plays : 0; game.html ||= starterCode.html; game.css ||= starterCode.css; game.js ||= starterCode.js; }); localStorage.setItem(GAMES_KEY, JSON.stringify(games)); updateCounters(); render(); } catch { /* O catálogo local continua disponível sem o servidor. */ } }
+    updateThemeToggle(); updateCounters(); render(); loadSharedGames(); if (location.protocol !== "file:") setInterval(loadSharedGames, 45000);
+  </script>
+</body>
+</html>

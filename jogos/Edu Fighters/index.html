@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>EDU FIGHTER — Bullet Hell Rogue-lite</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="game-container">
+  <div id="screen-title" class="screen">
+    <h1>EDU FIGHTER</h1>
+    <p style="color:#8ab;margin-bottom:12px">Bullet Hell Rogue-lite Arcade</p>
+    <div class="btn-group">
+      <button onclick="showScreen('screen-phases')">▶ CAMPANHA (8 FASES)</button>
+      <button class="endless" onclick="startEndless()">♾ MODO INFINITO</button>
+      <button class="power" onclick="showScreen('screen-powers')">⚡ PODERES</button>
+      <button class="boss" onclick="showScreen('screen-boss')">⚔ BOSS RUSH (8 CHEFES)</button>
+      <button class="shop" onclick="showScreen('screen-shop')">🛒 LOJA</button>
+      <button onclick="showScreen('screen-codes')">🔑 CÓDIGOS</button>
+      <button onclick="showScreen('screen-options')">⚙ CONTROLES</button>
+      <button onclick="showScreen('screen-highscore')">🏆 RANKING ARCADE</button>
+    </div>
+  </div>
+
+  <div id="screen-powers" class="screen hidden">
+    <h2>⚡ ESCOLHER PODER</h2>
+    <p style="color:#8ab;font-size:.85rem;margin-bottom:10px">Poder: <span id="current-power-name" style="color:#f0f">Sandevistan</span></p>
+    <div class="power-card selected" id="pow-sandevistan" onclick="selectPower('sandevistan')"><h3 style="color:#0ff">Sandevistan</h3><div class="lore">Grátis • Barra enche com o tempo</div></div>
+    <div class="power-card locked" id="pow-nova" onclick="selectPower('nova')"><h3 style="color:#8cf">Nova Shield</h3><div class="lore">Escudo forte • 3 usos</div></div>
+    <div class="power-card locked" id="pow-horizon" onclick="selectPower('horizon')"><h3 style="color:#a0f">Event Horizon</h3><div class="lore">Puxa respostas • 3 usos</div></div>
+    <div class="power-card locked" id="pow-theworld" onclick="selectPower('theworld')"><h3 style="color:#f44">THE WORLD</h3><div class="lore">Para o tempo • 3 usos</div></div>
+    <div class="power-card locked" id="pow-sukuna" onclick="selectPower('sukuna')"><h3 style="color:#e22">Rei das Maldições</h3><div class="lore">Domain + Z/X/C • 3 usos</div></div>
+    <div class="power-card locked" id="pow-opala" onclick="selectPower('opala')"><h3 style="color:#f8f">Raio Opala</h3><div class="lore">Laser colorido • 3 usos</div></div>
+    <div class="power-card locked" id="pow-cereja" onclick="selectPower('cereja')"><h3 style="color:#f66">Cereja</h3><div class="lore">Explosão de cerejas • 3 usos</div></div>
+    <div class="btn-group" style="margin-top:12px"><button onclick="showScreen('screen-title')">CONFIRMAR</button></div>
+  </div>
+
+  <div id="screen-phases" class="screen hidden">
+    <h2>ESCOLHA A FASE</h2>
+    <div style="width:min(400px,96%); max-height:300px; overflow-y:auto; padding-right:4px;">
+      <div class="phase-card" id="phase-0" onclick="startPhase(0)"><h3 style="color:#0ff">Fase 1 — Números & Aritmética</h3><div class="lore">Matemática • 8 desafios • Mini-boss: Specter</div></div>
+      <div class="phase-card locked" id="phase-1" onclick="startPhase(1)"><h3 style="color:#8f8">Fase 2 — Biologia & Corpo Humano</h3><div class="lore">Ciências • 8 desafios • Mini-boss: Warden</div></div>
+      <div class="phase-card locked" id="phase-2" onclick="startPhase(2)"><h3 style="color:#fc3">Fase 3 — História Geral & Brasil</h3><div class="lore">História • 8 desafios • Mini-boss: Odissey</div></div>
+      <div class="phase-card locked" id="phase-3" onclick="startPhase(3)"><h3 style="color:#f8f">Fase 4 — Geografia & Geopolítica</h3><div class="lore">Geografia • 8 desafios • Mini-boss: Eclipse</div></div>
+      <div class="phase-card locked" id="phase-4" onclick="startPhase(4)"><h3 style="color:#f44">Fase 5 — Física & Astronomia</h3><div class="lore">Física & Química • 8 desafios • Mini-boss: Chronos</div></div>
+      <div class="phase-card locked" id="phase-5" onclick="startPhase(5)"><h3 style="color:#0af">Fase 6 — Lógica & Tecnologia</h3><div class="lore">Computação & Algoritmos • 8 desafios • Mini-boss: Infinity</div></div>
+      <div class="phase-card locked" id="phase-6" onclick="startPhase(6)"><h3 style="color:#e0aaff">Fase 7 — Língua Portuguesa & Arte</h3><div class="lore">Literatura & Cultura • 8 desafios • Mini-boss: Leviatã</div></div>
+      <div class="phase-card locked" id="phase-7" onclick="startPhase(7)"><h3 style="color:#ffd700">Fase 8 — Desafio Supremo Cósmico</h3><div class="lore">Conhecimento Geral • 8 desafios • Mini-boss Final: Oblivion</div></div>
+    </div>
+    <div class="btn-group" style="margin-top:10px"><button onclick="showScreen('screen-title')">VOLTAR</button></div>
+  </div>
+
+  <div id="screen-boss" class="screen hidden">
+    <h2>⚔ BOSS RUSH (8 CHEFES)</h2>
+    <div style="width:min(400px,96%); max-height:300px; overflow-y:auto; padding-right:4px;">
+      <div class="boss-card locked" id="boss-0" onclick="tryBoss(0)"><h3 style="color:#00f3ff">1. Specter</h3><div class="lore">HP 600 • Caça Furtivo • Fase 1</div></div>
+      <div class="boss-card locked" id="boss-1" onclick="tryBoss(1)"><h3 style="color:#00ff88">2. Warden</h3><div class="lore">HP 800 • Guardião de Escudos • Fase 2</div></div>
+      <div class="boss-card locked" id="boss-2" onclick="tryBoss(2)"><h3 style="color:#ffaa00">3. Odissey</h3><div class="lore">HP 1050 • Balística Pesada • Fase 3</div></div>
+      <div class="boss-card locked" id="boss-3" onclick="tryBoss(3)"><h3 style="color:#ff3366">4. Eclipse</h3><div class="lore">HP 1300 • Bombardeiro Cósmico • Fase 4</div></div>
+      <div class="boss-card locked" id="boss-4" onclick="tryBoss(4)"><h3 style="color:#bb66ff">5. Chronos</h3><div class="lore">HP 1600 • Distorção Temporal • Fase 5</div></div>
+      <div class="boss-card locked" id="boss-5" onclick="tryBoss(5)"><h3 style="color:#00e5ff">6. Infinity</h3><div class="lore">HP 1900 • Interceptador de Elite • Fase 6</div></div>
+      <div class="boss-card locked" id="boss-6" onclick="tryBoss(6)"><h3 style="color:#ff4400">7. Leviatã</h3><div class="lore">HP 2300 • Cruzador de Batalha • Fase 7</div></div>
+      <div class="boss-card locked" id="boss-7" onclick="tryBoss(7)"><h3 style="color:#ff0055">8. Oblivion</h3><div class="lore">HP 2800 • Titã Supremo do Cosmos • Fase 8</div></div>
+    </div>
+    <div class="btn-group" style="margin-top:10px"><button onclick="showScreen('screen-title')">VOLTAR</button></div>
+  </div>
+
+  <div id="screen-shop" class="screen hidden">
+    <h2>🛒 LOJA</h2>
+    <p style="color:#ff0;margin-bottom:8px">Moedas: <span id="shop-coins">0</span></p>
+    <div id="shop-list"></div>
+    <div class="btn-group" style="margin-top:10px"><button onclick="showScreen('screen-title')">VOLTAR</button></div>
+  </div>
+
+  <div id="screen-codes" class="screen hidden">
+    <h2>🔑 CÓDIGOS</h2>
+    <div class="form-group"><input type="text" id="code-input" placeholder="código"></div>
+    <button onclick="redeemCode()">RESGATAR</button>
+    <div style="margin-top:10px;font-size:.8rem;color:#8ab;line-height:1.5">
+      lordotavio → ADM<br>sukuna / arcoiris / cereja → poderes<br>lordthur → desativa ADM<br>
+      <span style="color:#f44;font-weight:bold">resetall → RESETA TUDO</span>
+    </div>
+    <div class="btn-group" style="margin-top:10px"><button onclick="showScreen('screen-title')">VOLTAR</button></div>
+  </div>
+
+  <div id="screen-options" class="screen hidden">
+    <h2>CONTROLES</h2>
+    <div style="background:#0a1525;border:2px solid #1a3a5c;padding:11px;font-size:.85rem;line-height:1.6;max-width:94%">
+      <span style="color:#00f3ff;font-weight:bold">WASD / Setas</span> = Mover nave<br>
+      <span style="color:#00f3ff;font-weight:bold">Espaço</span> = Atirar blasters<br>
+      <span style="color:#00ff88;font-weight:bold">E / F / Botão Direito</span> = ✨ PARRY (Reflete projéteis & defende)<br>
+      <span style="color:#ff00cc;font-weight:bold">Shift</span> = Ativar Super Habilidade<br>
+      <span style="color:#ff4444;font-weight:bold">Z / X / C</span> = Sukuna Slashes<br>
+      <span style="color:#ffaa00;font-weight:bold">P</span> = Menu Principal
+    </div>
+    <div class="btn-group" style="margin-top:10px"><button onclick="showScreen('screen-title')">VOLTAR</button></div>
+  </div>
+
+  <!-- Tela de Iniciais do Arcade -->
+  <div id="screen-initials" class="screen hidden">
+    <h1 style="color:#ffd700; font-size:1.8rem; text-shadow: 0 0 16px #ffd700;">★ RECORDE ARCADE ★</h1>
+    <p style="color:#8ab4ff; font-size:0.85rem; margin-bottom:10px;">Use o teclado ou setas para escolher suas 3 iniciais:</p>
+    
+    <div class="initials-container">
+      <div class="init-slot" id="init-slot-0" onclick="activeCharIndex=0; updateInitialsDisplay();">A</div>
+      <div class="init-slot" id="init-slot-1" onclick="activeCharIndex=1; updateInitialsDisplay();">A</div>
+      <div class="init-slot" id="init-slot-2" onclick="activeCharIndex=2; updateInitialsDisplay();">A</div>
+    </div>
+
+    <div class="init-controls">
+      <button onclick="shiftChar(1)">▲ LETRA</button>
+      <button onclick="shiftChar(-1)">▼ LETRA</button>
+      <button onclick="nextCharSlot()">▶ PRÓX</button>
+    </div>
+
+    <div class="btn-group" style="margin-top:8px;">
+      <button style="border-color:#00ff88; color:#00ff88;" onclick="submitInitials()">CONFIRMAR RECORDE</button>
+      <button onclick="showScreen('screen-title')">PULAR</button>
+    </div>
+  </div>
+
+  <!-- Tabela do Ranking Arcade -->
+  <div id="screen-highscore" class="screen hidden">
+    <h2>🏆 RANKING ARCADE</h2>
+    <div id="rank-list" style="width:min(380px,96%);max-height:280px;overflow-y:auto"></div>
+    <div class="btn-group" style="margin-top:10px"><button onclick="showScreen('screen-title')">VOLTAR</button></div>
+  </div>
+
+  <div id="screen-phaseclear" class="screen hidden">
+    <h1 style="color:#0f0">FASE COMPLETA!</h1>
+    <p id="phase-msg" style="margin:10px 0;color:#ccc"></p>
+    <div class="btn-group">
+      <button onclick="showScreen('screen-phases')">PRÓXIMAS FASES</button>
+      <button onclick="showScreen('screen-title')">MENU</button>
+    </div>
+  </div>
+
+  <div id="screen-gameover" class="screen hidden">
+    <h1 id="end-title" style="color:#f44">FIM DE JOGO</h1>
+    <p id="end-msg" style="margin:10px 0;color:#ccc"></p>
+    <p>Pontos: <span id="final-score" style="color:#0ff">0</span></p>
+    <div class="btn-group" style="margin-top:12px;">
+      <button onclick="showScreen('screen-title')">MENU PRINCIPAL</button>
+      <button onclick="showScreen('screen-highscore')">VER RANKING</button>
+    </div>
+  </div>
+
+  <div id="screen-draft" class="screen hidden">
+    <h2 style="color:#00f3ff; margin-bottom: 6px; font-size: 1.5rem; text-shadow: 0 0 10px #00f3ff;">⚡ ESCOLHA SUA CARTA</h2>
+    <p style="color:#8ab4ff; font-size: 0.8rem; margin-bottom: 14px;">Acerte a pergunta para aplicar a carta ou sofra a penalidade ao errar.</p>
+    <div id="draft-cards-container" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; width:100%; max-width:800px;">
+      <!-- Cards e Reroll inseridos via JS -->
+    </div>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div class="hud-box">★ <span id="score-display">0</span></div>
+    <div class="hud-box">Fase <span id="phase-display">1</span></div>
+    <div class="hud-box"><div id="life-bar-container"><div id="life-bar"></div></div></div>
+    <div class="hud-box"><span id="q-display">Wave 1/5</span></div>
+    <div class="hud-box">Poder <span id="power-uses">3</span></div>
+  </div>
+  <div id="question-box" class="hidden"></div>
+  <div id="super-bar-container" class="hidden"><div id="super-bar"></div></div>
+  <div id="boss-name"></div>
+  <div id="boss-hp-wrap"><div id="boss-hp"></div></div>
+  <div id="coins-display">🪙 <span id="coins-val">0</span></div>
+  <div id="admin-badge">ADM</div>
+  <div id="parry-shine"></div>
+  <div id="za-text">DOMAIN</div>
+  <canvas id="c" width="480" height="340"></canvas>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/globals.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/boss.js"></script>
+<script src="js/abilities.js"></script>
+<script src="js/enemies.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

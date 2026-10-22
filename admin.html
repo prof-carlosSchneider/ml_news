@@ -1,0 +1,1831 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="imagens/logo-ml-news.png" />
+    <title>Painel Administrativo | ML News</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #e50914;
+        --red-dark: #9e0010;
+        --cyan: #55d9f5;
+        --gold: #f8c95d;
+        --blue: #071525;
+        --ice: #040914;
+        --black: #fff;
+        --white: #fff;
+        --muted: #8aa0b3;
+        --line: rgba(123, 155, 187, 0.24);
+        --card: rgba(12, 25, 42, 0.92);
+        --surface: #121d2f;
+        --panel-soft: #121d2f;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--ice);
+        color: var(--black);
+        font-family: Inter, Arial, sans-serif;
+        line-height: 1.45;
+      }
+
+      header {
+        background: linear-gradient(135deg, #071525 0%, #0d2945 100%);
+        color: white;
+        min-height: 72px;
+        padding: 12px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+      }
+
+      header div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .admin-brand-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
+      }
+
+      header h1 {
+        margin: 0;
+        font: 800 24px "Barlow Condensed";
+        letter-spacing: 1px;
+      }
+
+      header p {
+        margin: 0;
+        color: #c8dbe2;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      button,
+      .button {
+        border: 0;
+        border-radius: 7px;
+        padding: 12px 16px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 3px;
+      }
+
+      .primary {
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+        color: white;
+      }
+
+      .primary:hover {
+        background: #b91c1c;
+      }
+
+      .secondary {
+        background: rgba(85, 217, 245, 0.12);
+        color: var(--cyan);
+        border: 1px solid rgba(85, 217, 245, 0.35);
+      }
+
+      .secondary:hover {
+        background: var(--cyan);
+        color: var(--blue);
+      }
+
+      .danger {
+        background: rgba(229, 9, 20, 0.12);
+        color: #ff7b82;
+        border: 1px solid rgba(229, 9, 20, 0.3);
+      }
+
+      .danger:hover {
+        background: #fecaca;
+      }
+
+      .container {
+        width: min(1280px, 94%);
+        margin: 22px auto 48px;
+      }
+
+      .login-card,
+      .panel-section {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .login-card {
+        max-width: 450px;
+        margin: 48px auto;
+      }
+
+      h2,
+      h3 {
+        color: var(--white);
+        margin-top: 0;
+        font-family: "Barlow Condensed", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      h2 {
+        font-size: 25px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 9px;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin-bottom: 11px;
+        color: var(--cyan);
+      }
+
+      label {
+        display: block;
+        margin: 11px 0 5px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        min-height: 42px;
+        padding: 10px 11px;
+        font: inherit;
+        background: rgba(4, 9, 20, 0.72);
+        color: var(--white);
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 3px rgba(85, 217, 245, 0.12);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #60788d;
+      }
+
+      textarea {
+        min-height: 86px;
+        resize: vertical;
+        font-family: monospace;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .admin-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      #dashboard > .panel-section:first-child,
+      #dashboard > .form-actions,
+       #message-logs,
+       #activity-logs {
+        grid-column: 1 / -1;
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        flex-wrap: wrap;
+      }
+
+      .nav-tab {
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        color: var(--muted);
+        padding: 12px 16px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        margin-bottom: -2px;
+      }
+
+      .nav-tab:hover {
+        color: var(--cyan);
+        transform: none;
+      }
+
+      .nav-tab.active {
+        color: var(--cyan);
+        border-bottom-color: var(--cyan);
+        background: none;
+      }
+
+      .editor {
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--red);
+        padding: 15px;
+        background: rgba(18, 29, 47, 0.72);
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .editor:first-of-type {
+        margin-top: 0;
+      }
+
+      .editor-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 11px 14px;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .status {
+        color: #74e2aa;
+        font-weight: bold;
+        min-height: 20px;
+        padding: 8px 12px;
+        background: rgba(35, 170, 103, 0.12);
+        border-radius: 6px;
+        border-left: 3px solid #168044;
+      }
+
+      .status.error {
+        color: #ff7b82;
+        background: rgba(229, 9, 20, 0.12);
+        border-left-color: var(--red);
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .image-preview {
+        margin-top: 12px;
+        padding: 12px;
+        background: rgba(4, 9, 20, 0.72);
+        border: 2px dashed var(--line);
+        border-radius: 8px;
+        text-align: center;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #preview-logo,
+      #preview-emblem {
+        min-height: 130px;
+      }
+      #preview-hero,
+      #preview-school,
+      #preview-history,
+      #preview-news {
+        min-height: 170px;
+      }
+
+      .image-preview img {
+        max-width: 100%;
+        max-height: 150px;
+        object-fit: contain;
+      }
+      .gallery-manager {
+        display: grid;
+        gap: 14px;
+      }
+      .gallery-admin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 12px;
+      }
+      .gallery-admin-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .gallery-admin-card img {
+        display: block;
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        background: var(--panel-soft);
+      }
+      .gallery-admin-card-body {
+        display: grid;
+        gap: 8px;
+        padding: 10px;
+      }
+      .gallery-admin-card small {
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .gallery-admin-card button {
+        width: 100%;
+      }
+      .gallery-empty {
+        padding: 18px;
+        border: 1px dashed var(--line);
+        color: var(--muted);
+        text-align: center;
+      }
+      .upload-value {
+        display: none;
+      }
+
+      .preview-text {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .news-preview {
+        background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 12px;
+      }
+
+      .news-preview h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--blue);
+      }
+
+      .news-preview p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .news-preview .meta {
+        font-size: 11px;
+        color: #9ca3af;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+
+      .section-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: auto;
+        padding: 8px 11px;
+        background: rgba(85, 217, 245, 0.08);
+        color: var(--cyan);
+        border: 1px solid rgba(85, 217, 245, 0.25);
+        font-size: 11px;
+      }
+
+      .section-toggle:hover { transform: none; }
+      .section-toggle::after { content: "⌄"; font-size: 16px; line-height: 0.7; }
+      .panel-section.is-collapsed > .section-body { display: none; }
+      .panel-section.is-collapsed .section-toggle::after { content: "›"; }
+      .panel-section.is-collapsed .section-toggle { color: var(--muted); }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        background: var(--red);
+        color: white;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .message-log {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 12px;
+        background: rgba(18, 29, 47, 0.72);
+      }
+
+      .message-log h3 {
+        margin-bottom: 8px;
+      }
+
+      .message-log p {
+        line-height: 1.6;
+        margin: 10px 0 0;
+      }
+
+       .message-log small {
+         color: var(--muted);
+       }
+       .activity-log {
+         margin-top: 12px;
+         padding: 0;
+         border: 1px solid var(--line);
+         border-left: 4px solid var(--cyan);
+         border-radius: 8px;
+         background: rgba(18, 29, 47, 0.72);
+       }
+       .activity-log-header { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+       .activity-log h3 { margin: 0 0 4px; }
+       .activity-log small { color: var(--muted); }
+       .activity-changes { display: grid; }
+       .activity-change { display: grid; grid-template-columns: minmax(145px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 10px 16px; border-bottom: 1px solid rgba(123, 155, 187, 0.12); color: #d7e4ee; font-size: 12px; }
+       .activity-change:last-child { border-bottom: 0; }
+       .activity-change b { color: var(--cyan); }
+       .activity-change span { min-width: 0; overflow-wrap: anywhere; }
+       .activity-change span:first-of-type { color: #a8b8c7; }
+       .activity-change span:first-of-type::before { content: "Antes: "; color: var(--muted); font-weight: 700; }
+       .activity-change span:last-of-type::before { content: "Depois: "; color: var(--muted); font-weight: 700; }
+       .activity-images { padding: 0 16px 14px; }
+       .activity-images { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+       .activity-images img { width: 88px; height: 66px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+      .games-admin-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .game-admin-card {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(4, 9, 20, 0.5);
+      }
+      .game-admin-card strong,
+      .game-admin-card small {
+        display: block;
+      }
+      .game-admin-card strong { color: var(--white); }
+      .game-admin-card small { margin: 6px 0 12px; color: var(--muted); }
+      .game-admin-card button { width: 100%; margin-top: 6px; }
+      .game-code-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .game-code-grid textarea { min-height: 240px; background: #020811; color: #d9f4ff; font: 12px/1.55 Consolas, monospace; }
+      .game-preview { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+      .game-preview iframe { display: block; width: 100%; min-height: 300px; border: 0; }
+      .game-admin-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+      @media (max-width: 900px) { .game-code-grid { grid-template-columns: 1fr; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        header div {
+          width: 100%;
+        }
+
+        header button {
+          width: 100%;
+        }
+
+        .editor-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .admin-grid {
+          grid-template-columns: 1fr;
+        }
+
+        #dashboard > .panel-section:first-child,
+        #dashboard > .form-actions,
+         #message-logs,
+         #activity-logs {
+          grid-column: auto;
+        }
+
+        .full {
+          grid-column: auto;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .section-toggle { margin-left: 0; }
+
+        .activity-change { grid-template-columns: 1fr; gap: 4px; }
+
+        .form-actions {
+          flex-direction: column;
+        }
+
+        .form-actions button,
+        .form-actions a {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <img class="admin-brand-logo" src="imagens/logo-ml-news.png" alt="ML News" />
+        <h1>ML News</h1>
+        <p>Painel administrativo · gerenciamento do portal</p>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="index.html" style="color: #55d9f5; text-decoration: none; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">← Voltar ao portal</a>
+        <button id="logout" class="danger hidden">Sair</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="login-section" class="login-card">
+        <h2>Acesso do Administrador</h2>
+        <p class="hint">
+          Acesso exclusivo para gerenciamento do conteúdo do portal escolar.
+        </p>
+
+        <form id="login-form">
+          <label for="username">Usuário</label>
+          <input
+            id="username"
+            type="text"
+            value="admin"
+            autocomplete="username"
+            required
+          />
+
+          <label for="password">Senha</label>
+          <input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+
+          <div class="form-actions">
+            <button class="primary" type="submit">Entrar no painel</button>
+          </div>
+
+          <p id="login-message" class="status"></p>
+        </form>
+        <div style="margin-top: 24px; text-align: center; border-top: 1px solid rgba(123, 155, 187, 0.24); padding-top: 16px;">
+          <a href="index.html" style="color: #55d9f5; text-decoration: none; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">← Voltar ao portal principal</a>
+        </div>
+      </section>
+
+      <section id="dashboard" class="admin-grid hidden">
+        <!-- NOTÍCIAS -->
+        <div class="panel-section">
+          <div class="section-header">
+            <h2>📰 Gerenciar Notícias</h2>
+            <span class="badge">DESTAQUE</span>
+          </div>
+          <p class="hint">
+            Edite o título, resumo, categoria e data de cada notícia. As imagens podem ser alteradas no final da página na seção "Imagens".
+          </p>
+          <p id="save-message" class="status" style="margin-bottom: 16px;"></p>
+
+          <div class="editor">
+            <h3>📌 Notícia 1 (Destaque Principal)</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Título da notícia</label>
+                <input data-group="news" data-index="0" data-field="title" placeholder="Ex: Tecnologia transforma sala de aula" />
+              </div>
+              <div class="full">
+                <label>Resumo/Descrição</label>
+                <textarea data-group="news" data-index="0" data-field="summary" placeholder="Breve descrição que aparecerá na listagem..."></textarea>
+              </div>
+              <div>
+                <label>Categoria</label>
+                <select data-group="news" data-index="0" data-field="category">
+                  <option>EDUCAÇÃO</option>
+                  <option>TECNOLOGIA</option>
+                  <option>CULTURA</option>
+                  <option>ESPORTES</option>
+                  <option>COMUNIDADE ESCOLAR</option>
+                  <option>PROJETOS</option>
+                </select>
+              </div>
+              <div>
+                <label>Data</label>
+                <input data-group="news" data-index="0" data-field="date" type="text" placeholder="DD/MM/YYYY" />
+              </div>
+              <div class="full">
+                <div class="news-preview">
+                  <h4>Preview:</h4>
+                  <p id="preview-0" style="margin: 0;"></p>
+                  <div class="meta" id="meta-0"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="editor">
+            <h3>📌 Notícia 2</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Título da notícia</label>
+                <input data-group="news" data-index="1" data-field="title" placeholder="Ex: Comunidade participa de atividades especiais" />
+              </div>
+              <div class="full">
+                <label>Resumo/Descrição</label>
+                <textarea data-group="news" data-index="1" data-field="summary" placeholder="Breve descrição que aparecerá na listagem..."></textarea>
+              </div>
+              <div>
+                <label>Categoria</label>
+                <select data-group="news" data-index="1" data-field="category">
+                  <option>EDUCAÇÃO</option>
+                  <option>TECNOLOGIA</option>
+                  <option>CULTURA</option>
+                  <option>ESPORTES</option>
+                  <option>COMUNIDADE ESCOLAR</option>
+                  <option>PROJETOS</option>
+                </select>
+              </div>
+              <div>
+                <label>Data</label>
+                <input data-group="news" data-index="1" data-field="date" type="text" placeholder="DD/MM/YYYY" />
+              </div>
+              <div class="full">
+                <div class="news-preview">
+                  <h4>Preview:</h4>
+                  <p id="preview-1" style="margin: 0;"></p>
+                  <div class="meta" id="meta-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="editor">
+            <h3>📌 Notícia 3</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Título da notícia</label>
+                <input data-group="news" data-index="2" data-field="title" placeholder="Ex: Colégio participa de competição" />
+              </div>
+              <div class="full">
+                <label>Resumo/Descrição</label>
+                <textarea data-group="news" data-index="2" data-field="summary" placeholder="Breve descrição que aparecerá na listagem..."></textarea>
+              </div>
+              <div>
+                <label>Categoria</label>
+                <select data-group="news" data-index="2" data-field="category">
+                  <option>EDUCAÇÃO</option>
+                  <option>TECNOLOGIA</option>
+                  <option>CULTURA</option>
+                  <option>ESPORTES</option>
+                  <option>COMUNIDADE ESCOLAR</option>
+                  <option>PROJETOS</option>
+                </select>
+              </div>
+              <div>
+                <label>Data</label>
+                <input data-group="news" data-index="2" data-field="date" type="text" placeholder="DD/MM/YYYY" />
+              </div>
+              <div class="full">
+                <div class="news-preview">
+                  <h4>Preview:</h4>
+                  <p id="preview-2" style="margin: 0;"></p>
+                  <div class="meta" id="meta-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMUNICADOS -->
+        <div class="panel-section">
+          <h2>📢 Comunicados</h2>
+          <p class="hint">
+            Adicione comunicados importantes, avisos urgentes e prazos que a comunidade escolar precisa conhecer.
+          </p>
+          <div id="notice-fields"></div>
+        </div>
+
+        <!-- CARDÁPIO -->
+        <div class="panel-section">
+          <h2>🍽️ Cardápio da Semana</h2>
+          <p class="hint">
+            Altere o cardápio diário com as opções de café da manhã, almoço e lanche.
+          </p>
+          <div id="menu-fields"></div>
+        </div>
+
+        <!-- MEMÓRIA E IDENTIDADE -->
+        <div class="panel-section">
+          <h2>🏛️ Memória e Identidade</h2>
+          <p class="hint">Edite o texto da história institucional e os três destaques que aparecem nessa seção do portal.</p>
+          <div class="editor">
+            <h3>História do colégio</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Chamada pequena</label>
+                <input data-group="history" data-index="0" data-field="eyebrow" placeholder="MEMÓRIA E IDENTIDADE" />
+              </div>
+              <div class="full">
+                <label>Título</label>
+                <input data-group="history" data-index="0" data-field="title" placeholder="História do Moysés Lupion" />
+              </div>
+              <div class="full">
+                <label>Texto principal</label>
+                <textarea data-group="history" data-index="0" data-field="description" placeholder="Conte a trajetória do colégio..."></textarea>
+              </div>
+              <div>
+                <label>1º destaque</label>
+                <input data-group="history" data-index="0" data-field="item1Label" placeholder="HISTÓRIA" />
+              </div>
+              <div>
+                <label>Texto do 1º destaque</label>
+                <input data-group="history" data-index="0" data-field="item1Text" placeholder="Conteúdo oficial em preparação." />
+              </div>
+              <div>
+                <label>2º destaque</label>
+                <input data-group="history" data-index="0" data-field="item2Label" placeholder="COMUNIDADE" />
+              </div>
+              <div>
+                <label>Texto do 2º destaque</label>
+                <input data-group="history" data-index="0" data-field="item2Text" placeholder="Depoimentos e registros..." />
+              </div>
+              <div>
+                <label>3º destaque</label>
+                <input data-group="history" data-index="0" data-field="item3Label" placeholder="FUTURO" />
+              </div>
+              <div>
+                <label>Texto do 3º destaque</label>
+                <input data-group="history" data-index="0" data-field="item3Text" placeholder="Uma escola conectada..." />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRALHA TV -->
+        <div class="panel-section">
+          <h2>📺 Tralha TV</h2>
+          <p class="hint">Edite a identidade do canal, as redes sociais, os oito integrantes e os vídeos publicados.</p>
+          <div class="editor">
+            <div class="editor-grid">
+              <div><label>Chamada</label><input data-group="tralhaTv" data-index="0" data-field="eyebrow" /></div>
+              <div><label>Título</label><input data-group="tralhaTv" data-index="0" data-field="title" /></div>
+              <div class="full"><label>Descrição</label><textarea data-group="tralhaTv" data-index="0" data-field="description"></textarea></div>
+              <div class="full"><label>Redes sociais (uma por linha: rede|perfil|URL)</label><textarea data-group="tralhaTv" data-index="0" data-field="socials"></textarea></div>
+              <div class="full"><label>Integrantes (uma por linha: nome|URL da imagem)</label><textarea data-group="tralhaTv" data-index="0" data-field="members"></textarea></div>
+              <div class="full"><label>Vídeos (uma por linha: título|URL ou arquivo|descrição)</label><textarea data-group="tralhaTv" data-index="0" data-field="videos"></textarea></div>
+              <div class="full"><label>Upload de novo vídeo</label><input id="tralha-video-upload" type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" /><p class="hint">O arquivo será adicionado à lista como um novo vídeo editável.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONFIGURAÇÕES -->
+        <div class="panel-section">
+          <h2>⚙️ Configurações Gerais</h2>
+          <p class="hint">Personalize as informações gerais do portal</p>
+
+          <div class="editor">
+            <h3>Informações do Portal</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Título do portal</label>
+                <input data-group="settings" data-index="0" data-field="siteTitle" placeholder="ML News - Portal Escolar" />
+              </div>
+              <div class="full">
+                <label>Slogan/Subtítulo</label>
+                <input data-group="settings" data-index="0" data-field="siteSlogan" placeholder="Informação, educação e comunidade" />
+              </div>
+              <div class="full">
+                <label>Descrição geral</label>
+                <textarea data-group="settings" data-index="0" data-field="siteDescription" placeholder="Descrição que aparece nos mecanismos de busca..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTATO -->
+        <div class="panel-section">
+          <h2>📞 Informações de Contato</h2>
+          <p class="hint">Atualize os dados de contato da escola que aparecem no portal</p>
+
+          <div class="editor">
+            <h3>Dados de Contato</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Endereço completo</label>
+                <input data-group="contact" data-index="0" data-field="address" placeholder="Antonina — Paraná — Brasil" />
+              </div>
+              <div>
+                <label>Telefone</label>
+                <input data-group="contact" data-index="0" data-field="phone" placeholder="(XX) XXXXX-XXXX" />
+              </div>
+              <div>
+                <label>E-mail</label>
+                <input data-group="contact" data-index="0" data-field="email" placeholder="contato@escola.com.br" />
+              </div>
+              <div>
+                <label>Horário de atendimento</label>
+                <input data-group="contact" data-index="0" data-field="hours" placeholder="Segunda a sexta, 7h às 18h" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GERENCIADOR DE IMAGENS -->
+        <div class="panel-section">
+          <h2>🖼️ Gerenciador de Imagens</h2>
+          <p class="hint">
+            Escolha os arquivos diretamente no computador. Cada grupo abaixo corresponde a uma parte específica do portal.
+          </p>
+
+          <div class="editor">
+            <h3>Identidade e imagens principais</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>🎯 Logo (escolha um arquivo)</label>
+                <input type="file" accept="image/*" data-upload-field="logo" />
+                <input class="upload-value" data-group="images" data-index="0" data-field="logo" placeholder="logo-ml-news.png" />
+                <div class="image-preview" id="preview-logo">
+                  <span class="preview-text">Preview da logo aparecerá aqui</span>
+                </div>
+              </div>
+              <div class="full">
+                <label>🏅 Emblema CCM (escolha um arquivo)</label>
+                <input type="file" accept="image/*" data-upload-field="emblem" />
+                <input class="upload-value" data-group="images" data-index="0" data-field="emblem" placeholder="imagens/emblema-ccm.jpg" />
+                <div class="image-preview" id="preview-emblem">
+                  <span class="preview-text">Preview do emblema aparecerá aqui</span>
+                </div>
+              </div>
+              <div class="full">
+                <label>Imagem do hero / capa inicial</label>
+                <input type="file" accept="image/*" data-upload-field="heroImage" />
+                <input class="upload-value" data-group="images" data-index="0" data-field="heroImage" placeholder="https://images.unsplash.com/..." />
+                <div class="image-preview" id="preview-hero">
+                  <span class="preview-text">Preview da imagem hero aparecerá aqui</span>
+                </div>
+              </div>
+              <div class="full">
+                <label>Foto da notícia principal</label>
+                <input type="file" accept="image/*" data-upload-field="schoolPhoto" />
+                <input class="upload-value" data-group="images" data-index="0" data-field="schoolPhoto" placeholder="https://images.unsplash.com/..." />
+                <div class="image-preview" id="preview-school">
+                  <span class="preview-text">Preview da foto da escola aparecerá aqui</span>
+                </div>
+              </div>
+              <div class="full">
+                <label>Foto da seção história</label>
+                <input type="file" accept="image/*" data-upload-field="historyPhoto" />
+                <input class="upload-value" data-group="images" data-index="0" data-field="historyPhoto" placeholder="https://images.unsplash.com/..." />
+                <div class="image-preview" id="preview-history">
+                  <span class="preview-text">Preview da foto histórica aparecerá aqui</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="editor">
+            <h3>Notícias · fotos dos cards</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Fotos das notícias (selecione várias de uma vez)</label>
+                <input type="file" accept="image/*" multiple data-upload-list="newsImages" />
+                <textarea class="upload-value" data-group="images" data-index="0" data-field="newsImages" placeholder="https://images.unsplash.com/photo-1516321318423-f06f85e504b3&#10;https://images.unsplash.com/photo-1513364776144-60967b0f800f&#10;https://images.unsplash.com/photo-1546519638-68e109498ffc"></textarea>
+                <div class="image-preview" id="preview-news">
+                  <span class="preview-text">Previews das imagens de notícias aparecerão aqui</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="editor">
+            <h3>Mural de fotos · galeria</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Fotos atuais da galeria</label>
+                <p class="hint">Troque ou remova uma foto individualmente. As alterações são aplicadas quando você salvar.</p>
+                <div id="gallery-admin-list" class="gallery-admin-grid"></div>
+                <div class="gallery-manager">
+                  <label for="gallery-add-files">Adicionar novas fotos</label>
+                  <input id="gallery-add-files" type="file" accept="image/*" multiple />
+                  <label for="gallery-add-category">Categoria das novas fotos</label>
+                  <select id="gallery-add-category">
+                    <option>EVENTOS</option>
+                    <option>PROJETOS</option>
+                    <option>ESPORTES</option>
+                  </select>
+                </div>
+                <textarea class="upload-value" data-group="images" data-index="0" data-field="galleryImages" placeholder="https://images.unsplash.com/photo-1523240795612-9a054b0db644|EVENTOS&#10;https://images.unsplash.com/photo-1531482615713-2afd69097998|PROJETOS&#10;https://images.unsplash.com/photo-1461896836934-ffe607ba8211|ESPORTES"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="save-button" class="primary">
+            ✓ Salvar Todas as Alterações
+          </button>
+          <a class="button secondary" href="index.html">↻ Voltar ao Portal</a>
+        </div>
+      </section>
+
+      <section id="message-logs" class="panel-section hidden">
+        <div class="section-header">
+          <h2>✉ Caixa de Mensagens</h2>
+          <button id="clear-logs" class="danger" type="button">Limpar registros</button>
+        </div>
+        <p class="hint">
+          Mensagens enviadas pelo formulário “Fale conosco” no portal compartilhado.
+        </p>
+        <div id="message-log-list"></div>
+      </section>
+
+      <section id="activity-logs" class="panel-section hidden">
+        <div class="section-header">
+          <h2>🕘 Histórico de alterações</h2>
+          <div>
+            <button id="refresh-activity" class="secondary" type="button">Atualizar</button>
+            <button id="clear-activity" class="danger" type="button">Limpar histórico</button>
+          </div>
+        </div>
+        <p class="hint">Registro compartilhado de tudo que foi publicado pelo painel: data, área modificada, valores anteriores e novos e miniaturas das fotos alteradas.</p>
+        <div id="activity-log-list"></div>
+      </section>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "colegioHorizonteData";
+      const AUTH_KEY = "colegioHorizonteAdmin";
+      const CONTACT_LOGS_KEY = "colegioHorizonteContactLogs";
+      const GAMES_KEY = "mlnewsStudentGames";
+      const GAME_STARTER = {
+        html: "<main><h1>Meu jogo</h1><button id='start'>Começar</button><p id='message'></p></main>",
+        css: "body{margin:0;display:grid;place-items:center;min-height:100vh;background:#081525;color:white;font-family:sans-serif}main{text-align:center}button{padding:12px 18px;border:0;border-radius:8px;background:#55d9f5;color:#081525;font-weight:bold}",
+        js: "document.querySelector('#start').onclick=()=>document.querySelector('#message').textContent='Jogo iniciado!';",
+      };
+      const DEFAULT_GAMES = [
+        ["Eco Quest", "Biologia", "9A", "Lucas R.", "#natureza #quiz", "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80"],
+        ["Cyber Code", "Programação", "3TEC", "Beatriz M.", "#logica #tech", "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80"],
+        ["Math Runner", "Matemática", "1NEM", "Gabriel T.", "#runner #math", "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=700&q=80"],
+        ["História Viva", "História", "2NEM", "Carla S.", "#rpg #historia", "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=700&q=80"],
+        ["Space Algo", "Robótica", "1TEC", "Enzo P.", "#space #code", "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=700&q=80"],
+        ["Química Fun", "Química", "2TEC", "Juliana K.", "#lab #elementos", "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=700&q=80"],
+      ];
+      let adminGames = [];
+      let currentData = null;
+      let adminToken = sessionStorage.getItem("mlnewsAdminToken") || "";
+      let contactLogs = [];
+      let contactLogsLoaded = false;
+      let gameAdminReady = false;
+
+      const defaultData = {
+        news: [
+          {
+            title: "Tecnologia na sala de aula amplia as experiências de aprendizagem",
+            summary: "Novas ferramentas digitais tornam as aulas ainda mais interativas e dinâmicas.",
+            category: "TECNOLOGIA",
+            date: "12/09/2024",
+          },
+          {
+            title: "Festival cultural celebra talentos da comunidade escolar",
+            summary: "Alunos se preparam para uma tarde especial de música, dança e arte.",
+            category: "CULTURA",
+            date: "10/09/2024",
+          },
+          {
+            title: "Colégio conquista destaque no campeonato municipal",
+            summary: "Nossas equipes representaram a escola com muita dedicação e vitórias.",
+            category: "ESPORTES",
+            date: "08/09/2024",
+          },
+        ],
+        notices: [
+          {
+            type: "URGENTE",
+            title: "Reunião de responsáveis do Ensino Fundamental",
+            description: "Dia 20 de setembro, às 18h30, no auditório principal.",
+          },
+          {
+            type: "INFORMATIVO",
+            title: "Entrega dos boletins do segundo trimestre",
+            description: "Os boletins estarão disponíveis a partir de 25 de setembro.",
+          },
+          {
+            type: "INFORMATIVO",
+            title: "Inscrições para atividades extracurriculares",
+            description: "Inscrições abertas até o dia 27 de setembro.",
+          },
+        ],
+        menu: [
+          { day: "SEGUNDA", main: "Arroz, feijão e frango", breakfast: "Pão e fruta", lunch: "Salada e frango", snack: "Bolo de milho" },
+          { day: "TERÇA", main: "Macarrão à bolonhesa", breakfast: "Leite e biscoito", lunch: "Macarrão e legumes", snack: "Sanduíche" },
+          { day: "QUARTA", main: "Arroz, feijão e peixe", breakfast: "Iogurte e fruta", lunch: "Peixe e purê", snack: "Vitamina" },
+          { day: "QUINTA", main: "Arroz colorido", breakfast: "Pão com queijo", lunch: "Arroz e carne", snack: "Frutas" },
+          { day: "SEXTA", main: "Feijoada", breakfast: "Pão e café", lunch: "Feijoada completa", snack: "Doce" },
+        ],
+        history: [
+          {
+            eyebrow: "MEMÓRIA E IDENTIDADE",
+            title: "História do Moysés Lupion",
+            description: "Esta seção será preenchida com a trajetória oficial da instituição, seus projetos, conquistas e a participação da comunidade escolar.",
+            item1Label: "HISTÓRIA", item1Text: "Conteúdo oficial em preparação.",
+            item2Label: "COMUNIDADE", item2Text: "Depoimentos e registros serão adicionados.",
+            item3Label: "FUTURO", item3Text: "Uma escola conectada às novas possibilidades.",
+          },
+        ],
+        settings: [
+          {
+            siteTitle: "ML News - Portal Escolar",
+            siteSlogan: "Informação, educação e comunidade",
+            siteDescription: "O canal oficial do Colégio Estadual Moysés Lupion para estudantes, famílias, professores e toda a comunidade.",
+          },
+        ],
+        contact: [
+          {
+            address: "Antonina — Paraná — Brasil",
+            phone: "(XX) XXXXX-XXXX",
+            email: "contato@escola.com.br",
+            hours: "Segunda a sexta, 7h às 18h",
+          },
+        ],
+        images: [
+          {
+            logo: "imagens/logo-ml-news.png",
+            emblem: "imagens/emblema-ccm.jpg",
+            heroImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80",
+            schoolPhoto: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80",
+            historyPhoto: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80",
+            newsImages: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80\nhttps://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80\nhttps://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=700&q=80",
+            galleryImages: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80|EVENTOS\nhttps://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80|PROJETOS\nhttps://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80|ESPORTES",
+          },
+        ],
+        tralhaTv: [{
+          eyebrow: "CANAL DOS ESTUDANTES",
+          title: "Tralha TV",
+          description: "Conteúdo caótico, autêntico e sem filtro feito pela comunidade estudantil.",
+          heroImage: "imagens/uploads/tralha-tv/tralha-tv-capa-painel.jpeg",
+          dogImage: "imagens/uploads/tralha-tv/tralha-tv-pagina-inicial.jpeg",
+          socials: "instagram|@tralhatv|https://instagram.com/tralhatv\ntiktok|@tralhatv|https://tiktok.com/@tralhatv\nyoutube|/tralhatv|https://youtube.com/@tralhatv\ntwitter|@tralhatv|https://twitter.com/tralhatv",
+          members: "Annabelly|imagens/uploads/tralha-tv/annabelly-logo.jpeg\nMaria|imagens/uploads/tralha-tv/tralha-tv-encerramento-01.jpeg\nLyra|imagens/uploads/tralha-tv/lyra-logo.jpeg\nDaniel|imagens/uploads/tralha-tv/tralha-tv-encerramento-02.jpeg\nGabi|imagens/uploads/tralha-tv/gabi-logo.jpeg\nAlice|imagens/uploads/tralha-tv/alice-logo.jpeg\nJu|imagens/uploads/tralha-tv/tralha-tv-encerramento-03.jpeg\nMavi|imagens/uploads/tralha-tv/mavi-logo.jpeg",
+          videos: "Episódio de estreia|https://www.youtube.com/@tralhatv|Conheça a Tralha TV\nAo vivo|https://www.youtube.com/@tralhatv/live|Acompanhe as novidades",
+        }],
+      };
+
+      function getData() {
+        if (currentData) return structuredClone(currentData);
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || structuredClone(defaultData);
+        } catch {
+          return structuredClone(defaultData);
+        }
+      }
+
+      async function api(url, options = {}) {
+        const headers = new Headers(options.headers || {});
+        if (adminToken) headers.set("Authorization", `Bearer ${adminToken}`);
+        const response = await fetch(url, { ...options, headers, cache: "no-store" });
+        let payload = {};
+        try { payload = await response.json(); } catch {}
+        if (!response.ok) throw new Error(payload.error || "Não foi possível concluir a operação.");
+        return payload;
+      }
+
+      async function loadPortalData() {
+        const payload = await api("/api/content");
+        currentData = { ...structuredClone(defaultData), ...(payload.data || {}) };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));
+      }
+
+      function getContactLogs() {
+        if (contactLogsLoaded) return contactLogs;
+        try {
+          const logs = JSON.parse(localStorage.getItem(CONTACT_LOGS_KEY));
+          return Array.isArray(logs) ? logs : [];
+        } catch {
+          return [];
+        }
+      }
+
+      async function loadContactLogs() {
+        const payload = await api("/api/contact");
+        contactLogs = Array.isArray(payload.messages) ? payload.messages : [];
+        contactLogsLoaded = true;
+      }
+
+      function escapeHtml(value = "") {
+        return String(value).replace(/[&<>"']/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;",
+        })[character]);
+      }
+
+      function legacyAdminGames() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(GAMES_KEY) || "null");
+          if (Array.isArray(saved)) return saved;
+        } catch {
+          localStorage.removeItem(GAMES_KEY);
+        }
+        return DEFAULT_GAMES.map(([title, subject, className, author, tags, image], index) => ({
+          title, subject, className, author, tags, image, plays: 0, id: index + 1, ...GAME_STARTER,
+        }));
+      }
+
+      async function loadAdminGames() {
+        const payload = await api("/api/games");
+        return Array.isArray(payload.games) ? payload.games : legacyAdminGames();
+      }
+
+      async function saveAdminGames() {
+        const payload = await api("/api/games", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ games: adminGames }),
+        });
+        adminGames = payload.games;
+        localStorage.setItem(GAMES_KEY, JSON.stringify(adminGames));
+      }
+
+      function updateGamePreview() {
+        const preview = document.querySelector("#admin-game-preview");
+        if (!preview) return;
+        const html = document.querySelector("#admin-game-html").value;
+        const css = document.querySelector("#admin-game-css").value;
+        const js = document.querySelector("#admin-game-js").value.replace(/<\/script/gi, "<\\/script");
+        preview.srcdoc = `<!doctype html><html><head><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`;
+      }
+
+      function fillGameEditor(index) {
+        const game = adminGames[index];
+        if (!game) return;
+        document.querySelector("#admin-game-title").value = game.title || "";
+        document.querySelector("#admin-game-subject").value = game.subject || "";
+        document.querySelector("#admin-game-class").value = game.className || "";
+        document.querySelector("#admin-game-author").value = game.author || "";
+        document.querySelector("#admin-game-tags").value = game.tags || "";
+        document.querySelector("#admin-game-html").value = game.html || GAME_STARTER.html;
+        document.querySelector("#admin-game-css").value = game.css || GAME_STARTER.css;
+        document.querySelector("#admin-game-js").value = game.js || GAME_STARTER.js;
+        updateGamePreview();
+      }
+
+      function renderAdminGames() {
+        const list = document.querySelector("#games-admin-list");
+        const select = document.querySelector("#admin-game-select");
+        if (!list || !select) return;
+        list.innerHTML = adminGames.map((game, index) => `<article class="game-admin-card"><strong>${escapeHtml(game.title || "Jogo sem título")}</strong><small>${escapeHtml(game.className || "Sem turma")} · ${escapeHtml(game.author || "Sem autor")}</small><button class="secondary" type="button" data-admin-edit-game="${index}">Editar</button></article>`).join("");
+        select.innerHTML = adminGames.map((game, index) => `<option value="${index}">${escapeHtml(game.title || "Jogo sem título")}</option>`).join("");
+        if (adminGames.length) fillGameEditor(0);
+      }
+
+      function setGamesStatus(message, error = false) {
+        const status = document.querySelector("#games-admin-status");
+        if (!status) return;
+        status.textContent = message;
+        status.classList.toggle("error", error);
+      }
+
+      function readGameFile(input, targetSelector) {
+        const file = input.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          document.querySelector(targetSelector).value = reader.result;
+          updateGamePreview();
+          input.value = "";
+          setGamesStatus(`${file.name} carregado.`);
+        };
+        reader.readAsText(file);
+      }
+
+      function setupGameAdmin() {
+        renderAdminGames();
+        if (gameAdminReady) return;
+        gameAdminReady = true;
+        document.querySelector("#admin-game-select")?.addEventListener("change", (event) => fillGameEditor(Number(event.target.value)));
+        document.querySelectorAll("#admin-game-html, #admin-game-css, #admin-game-js").forEach((field) => field.addEventListener("input", updateGamePreview));
+        document.querySelector("#admin-game-html-file")?.addEventListener("change", (event) => readGameFile(event.target, "#admin-game-html"));
+        document.querySelector("#admin-game-css-file")?.addEventListener("change", (event) => readGameFile(event.target, "#admin-game-css"));
+        document.querySelector("#admin-game-js-file")?.addEventListener("change", (event) => readGameFile(event.target, "#admin-game-js"));
+        document.querySelector("#admin-new-game")?.addEventListener("click", async () => {
+          adminGames.push({ title: "Novo jogo", subject: "Projeto", className: "9A", author: "Aluno", tags: "#novo", plays: 0, ...GAME_STARTER });
+          try {
+            await saveAdminGames();
+            renderAdminGames();
+            document.querySelector("#admin-game-select").value = String(adminGames.length - 1);
+            fillGameEditor(adminGames.length - 1);
+            setGamesStatus("Novo projeto criado. Preencha os dados e salve.");
+          } catch (error) {
+            adminGames.pop();
+            setGamesStatus(error.message, true);
+          }
+        });
+        document.querySelector("#admin-save-game")?.addEventListener("click", async () => {
+          const index = Number(document.querySelector("#admin-game-select").value);
+          const game = adminGames[index];
+          if (!game) return;
+          game.title = document.querySelector("#admin-game-title").value.trim() || "Jogo sem título";
+          game.subject = document.querySelector("#admin-game-subject").value.trim() || "Projeto";
+          game.className = document.querySelector("#admin-game-class").value.trim() || "Todas";
+          game.author = document.querySelector("#admin-game-author").value.trim() || "Aluno";
+          game.tags = document.querySelector("#admin-game-tags").value.trim();
+          game.html = document.querySelector("#admin-game-html").value;
+          game.css = document.querySelector("#admin-game-css").value;
+          game.js = document.querySelector("#admin-game-js").value;
+          try {
+            await saveAdminGames();
+            renderAdminGames();
+            document.querySelector("#admin-game-select").value = String(index);
+            fillGameEditor(index);
+            setGamesStatus("Jogo salvo e publicado na área pública.");
+          } catch (error) {
+            setGamesStatus(error.message, true);
+          }
+        });
+        document.querySelector("#admin-remove-game")?.addEventListener("click", async () => {
+          const index = Number(document.querySelector("#admin-game-select").value);
+          if (!adminGames[index] || !confirm(`Remover o jogo \"${adminGames[index].title}\"?`)) return;
+          const removed = adminGames.splice(index, 1)[0];
+          try {
+            await saveAdminGames();
+            renderAdminGames();
+            setGamesStatus("Jogo removido.");
+          } catch (error) {
+            adminGames.splice(index, 0, removed);
+            setGamesStatus(error.message, true);
+          }
+        });
+        document.addEventListener("click", (event) => {
+          const edit = event.target.closest("[data-admin-edit-game]");
+          if (!edit) return;
+          document.querySelector("#admin-game-select").value = edit.dataset.adminEditGame;
+          fillGameEditor(Number(edit.dataset.adminEditGame));
+          document.querySelector("#game-admin-panel")?.scrollIntoView({ behavior: "smooth" });
+        });
+      }
+
+      function renderContactLogs() {
+        const container = document.querySelector("#message-log-list");
+        if (!container) return;
+        const logs = getContactLogs();
+        container.innerHTML = logs.length
+          ? logs.map((log) => {
+              const date = new Date(log.submittedAt).toLocaleString("pt-BR");
+              return `<article class="message-log"><h3>${escapeHtml(log.name)}</h3><small>${escapeHtml(log.email)} · ${date}</small><p>${escapeHtml(log.message)}</p></article>`;
+            }).join("")
+          : '<p class="hint">Nenhuma mensagem recebida ainda.</p>';
+      }
+
+      function formatActivityField(value) {
+        const labels = {
+          news: "Notícia", notices: "Comunicado", menu: "Cardápio", history: "Memória e identidade",
+          settings: "Configurações", contact: "Contato", images: "Imagem", title: "título", summary: "resumo",
+          category: "categoria", date: "data", type: "tipo", description: "descrição", eyebrow: "chamada",
+          item1Label: "1º destaque", item1Text: "texto do 1º destaque", item2Label: "2º destaque",
+          item2Text: "texto do 2º destaque", item3Label: "3º destaque", item3Text: "texto do 3º destaque",
+        };
+        const parts = String(value || "Campo").split("·").map((part) => part.trim()).filter(Boolean);
+        if (parts.length < 2 || !labels[parts[0]]) return String(value || "Campo");
+        const item = /^\d+$/.test(parts[1]) ? ` ${Number(parts[1])}` : "";
+        return `${labels[parts[0]]}${item}${parts.slice(2).map((part) => ` · ${labels[part] || part}`).join("")}`;
+      }
+
+      async function renderActivityLogs() {
+        const container = document.querySelector("#activity-log-list");
+        if (!container) return;
+        try {
+          const payload = await api("/api/audit");
+          const logs = Array.isArray(payload.logs) ? payload.logs : [];
+          container.innerHTML = logs.length ? logs.map((log) => {
+            const date = new Date(log.at).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+            const changeList = log.changes || [];
+            const changes = changeList.map((change) => `<div class="activity-change"><b>${escapeHtml(formatActivityField(change.field))}</b><span>${escapeHtml(change.before)}</span><span>${escapeHtml(change.after)}</span></div>`).join("");
+            const images = (log.images || []).map((source) => `<img src="${escapeHtml(source)}" alt="Foto alterada" loading="lazy">`).join("");
+            const summary = `${changeList.length} ${changeList.length === 1 ? "alteração" : "alterações"} registrada${changeList.length === 1 ? "" : "s"}`;
+            return `<article class="activity-log"><div class="activity-log-header"><h3>${escapeHtml(log.area || "Portal")}</h3><small>${date} · ${summary}</small></div>${changes ? `<div class="activity-changes">${changes}</div>` : ""}${images ? `<div class="activity-images">${images}</div>` : ""}</article>`;
+          }).join("") : '<p class="hint">Nenhuma alteração publicada ainda.</p>';
+        } catch (error) {
+          container.innerHTML = `<p class="hint">${escapeHtml(error.message)}</p>`;
+        }
+      }
+
+      function setupCollapsibleSections() {
+        document.querySelectorAll("#dashboard > .panel-section").forEach((section) => {
+          if (section.dataset.collapsibleReady) return;
+          const heading = section.querySelector("h2");
+          if (!heading) return;
+          let header = heading.parentElement.classList.contains("section-header")
+            ? heading.parentElement
+            : document.createElement("div");
+          if (header !== heading.parentElement) {
+            header.className = "section-header";
+            section.insertBefore(header, section.firstChild);
+            header.appendChild(heading);
+          }
+          const toggle = document.createElement("button");
+          toggle.type = "button";
+          toggle.className = "section-toggle";
+          toggle.textContent = "Minimizar";
+          toggle.setAttribute("aria-expanded", "true");
+          header.appendChild(toggle);
+          const body = document.createElement("div");
+          body.className = "section-body";
+          while (section.lastElementChild && section.lastElementChild !== header) body.prepend(section.lastElementChild);
+          section.appendChild(body);
+          toggle.addEventListener("click", () => {
+            const collapsed = section.classList.toggle("is-collapsed");
+            toggle.textContent = collapsed ? "Abrir" : "Minimizar";
+            toggle.setAttribute("aria-expanded", String(!collapsed));
+          });
+          section.dataset.collapsibleReady = "true";
+        });
+      }
+
+      function updateImagePreviews() {
+        const data = getData();
+        const images = data.images[0];
+
+        const previewFields = [
+          ["logo", "preview-logo", "Logo"],
+          ["emblem", "preview-emblem", "Emblema"],
+        ];
+        previewFields.forEach(([fieldName, previewId, alt]) => {
+          const input = document.querySelector(`[data-field="${fieldName}"]`);
+          const preview = document.querySelector(`#${previewId}`);
+          const source = input?.value || images[fieldName];
+          if (source && preview) {
+            preview.innerHTML = `<img src="${source}" alt="${alt}" onerror="this.parentElement.innerHTML='<span class=\'preview-text\'>Erro ao carregar imagem</span>'">`;
+          }
+        });
+
+        // Hero image preview
+        const heroInput = document.querySelector('[data-field="heroImage"]');
+        if (heroInput && heroInput.value) {
+          const heroPreview = document.querySelector('#preview-hero');
+          heroPreview.innerHTML = `<img src="${heroInput.value}" alt="Hero" onerror="this.parentElement.innerHTML='<span class=\\'preview-text\\'>Erro ao carregar imagem</span>'">`;
+        }
+
+        // School photo preview
+        const schoolInput = document.querySelector('[data-field="schoolPhoto"]');
+        if (schoolInput && schoolInput.value) {
+          const schoolPreview = document.querySelector('#preview-school');
+          schoolPreview.innerHTML = `<img src="${schoolInput.value}" alt="Escola" onerror="this.parentElement.innerHTML='<span class=\\'preview-text\\'>Erro ao carregar imagem</span>'">`;
+        }
+
+        // History photo preview
+        const historyInput = document.querySelector('[data-field="historyPhoto"]');
+        if (historyInput && historyInput.value) {
+          const historyPreview = document.querySelector('#preview-history');
+          historyPreview.innerHTML = `<img src="${historyInput.value}" alt="História" onerror="this.parentElement.innerHTML='<span class=\\'preview-text\\'>Erro ao carregar imagem</span>'">`;
+        }
+      }
+
+      function updateNewsPreviews() {
+        for (let i = 0; i < 3; i++) {
+          const titleEl = document.querySelector(`[data-group="news"][data-index="${i}"][data-field="title"]`);
+          const categoryEl = document.querySelector(`[data-group="news"][data-index="${i}"][data-field="category"]`);
+          const dateEl = document.querySelector(`[data-group="news"][data-index="${i}"][data-field="date"]`);
+          const summaryEl = document.querySelector(`[data-group="news"][data-index="${i}"][data-field="summary"]`);
+          
+          if (titleEl) {
+            const preview = document.querySelector(`#preview-${i}`);
+            const meta = document.querySelector(`#meta-${i}`);
+            if (preview) {
+              preview.textContent = titleEl.value || "Título da notícia";
+              meta.innerHTML = `<strong>${categoryEl?.value || "CATEGORIA"}</strong> · ${dateEl?.value || "DD/MM/YYYY"}`;
+            }
+          }
+        }
+      }
+
+      async function uploadImage(file, fieldName, oldSources = []) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("field", fieldName);
+        formData.append("oldSources", JSON.stringify(oldSources));
+        const payload = await api("/api/upload", { method: "POST", body: formData });
+        return payload.source;
+      }
+
+      function getGalleryEntries() {
+        const field = document.querySelector('[data-field="galleryImages"]');
+        return (field?.value || "").split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
+          const separator = line.lastIndexOf("|");
+          return separator > -1
+            ? { source: line.slice(0, separator), category: line.slice(separator + 1) || "EVENTOS" }
+            : { source: line, category: "EVENTOS" };
+        });
+      }
+
+      function setGalleryEntries(entries) {
+        const field = document.querySelector('[data-field="galleryImages"]');
+        if (!field) return;
+        field.value = entries.map((entry) => `${entry.source}|${entry.category}`).join("\n");
+        renderGalleryAdmin();
+      }
+
+      function renderGalleryAdmin() {
+        const container = document.querySelector("#gallery-admin-list");
+        if (!container) return;
+        const entries = getGalleryEntries();
+        if (!entries.length) {
+          container.innerHTML = '<div class="gallery-empty">Nenhuma foto cadastrada. Use o campo abaixo para adicionar.</div>';
+          return;
+        }
+        container.innerHTML = entries.map((entry, index) => `
+          <article class="gallery-admin-card">
+            <img src="${escapeHtml(entry.source)}" alt="Foto ${index + 1}" onerror="this.style.opacity='.35'">
+            <div class="gallery-admin-card-body">
+              <small title="${escapeHtml(entry.source)}">${escapeHtml(entry.source.startsWith("data:") ? "Imagem enviada do computador" : entry.source)}</small>
+              <select data-gallery-category="${index}" aria-label="Categoria da foto ${index + 1}">
+                <option ${entry.category === "EVENTOS" ? "selected" : ""}>EVENTOS</option>
+                <option ${entry.category === "PROJETOS" ? "selected" : ""}>PROJETOS</option>
+                <option ${entry.category === "ESPORTES" ? "selected" : ""}>ESPORTES</option>
+              </select>
+              <input type="file" accept="image/*" data-gallery-replace="${index}" hidden>
+              <button class="secondary" type="button" data-gallery-change="${index}">Trocar foto</button>
+              <button class="danger" type="button" data-gallery-remove="${index}">Remover</button>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      async function handleImageUpload(event) {
+        const input = event.target;
+        const files = Array.from(input.files || []);
+        if (!files.length) return;
+        const targetField = document.querySelector(`[data-field="${input.dataset.uploadField || input.dataset.uploadList}"]`);
+        const oldSources = input.dataset.uploadList === "galleryImages"
+          ? getGalleryEntries().map((entry) => entry.source)
+          : input.dataset.uploadList
+            ? String(targetField?.value || "").split("\n").map((source) => source.trim()).filter(Boolean)
+            : [targetField?.value].filter(Boolean);
+        let values;
+        try {
+          values = [];
+          for (const [index, file] of files.entries()) values.push(await uploadImage(file, input.dataset.uploadField || input.dataset.uploadList, index === 0 ? oldSources : []));
+        } catch (error) {
+          const message = document.querySelector("#save-message");
+          message.textContent = error.message;
+          message.classList.add("error");
+          return;
+        }
+
+        if (input.dataset.uploadField) {
+          const field = document.querySelector(`[data-field="${input.dataset.uploadField}"]`);
+          if (field) {
+            field.value = values[0];
+            field.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+        }
+
+        if (input.dataset.uploadList) {
+          const field = document.querySelector(`[data-field="${input.dataset.uploadList}"]`);
+          if (field) {
+            const category = document.querySelector("#gallery-upload-category")?.value || "EVENTOS";
+            field.value = input.dataset.uploadList === "galleryImages"
+              ? values.map((value) => `${value}|${category}`).join("\n")
+              : values.join("\n");
+            field.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+        }
+      }
+
+      document.addEventListener("click", (event) => {
+        const changeButton = event.target.closest("[data-gallery-change]");
+        if (changeButton) {
+          document.querySelector(`[data-gallery-replace="${changeButton.dataset.galleryChange}"]`)?.click();
+          return;
+        }
+        const removeButton = event.target.closest("[data-gallery-remove]");
+        if (removeButton) {
+          const entries = getGalleryEntries();
+          entries.splice(Number(removeButton.dataset.galleryRemove), 1);
+          setGalleryEntries(entries);
+        }
+      });
+
+      document.addEventListener("change", async (event) => {
+        const replaceInput = event.target.closest("[data-gallery-replace]");
+        const categorySelect = event.target.closest("[data-gallery-category]");
+        if (replaceInput?.files?.[0]) {
+          const entries = getGalleryEntries();
+          const index = Number(replaceInput.dataset.galleryReplace);
+          try {
+            entries[index].source = await uploadImage(replaceInput.files[0], "galleryImages", [entries[index].source]);
+            setGalleryEntries(entries);
+          } catch (error) {
+            const message = document.querySelector("#save-message");
+            message.textContent = error.message;
+            message.classList.add("error");
+          }
+        }
+        if (categorySelect) {
+          const entries = getGalleryEntries();
+          entries[Number(categorySelect.dataset.galleryCategory)].category = categorySelect.value;
+          setGalleryEntries(entries);
+        }
+      });
+
+      document.querySelector("#gallery-add-files")?.addEventListener("change", async (event) => {
+        const files = Array.from(event.target.files || []);
+        if (!files.length) return;
+        const category = document.querySelector("#gallery-add-category")?.value || "EVENTOS";
+        const entries = getGalleryEntries();
+        try {
+          const values = await Promise.all(files.map((file) => uploadImage(file, "galleryImages")));
+          values.forEach((source) => entries.push({ source, category }));
+          setGalleryEntries(entries);
+        } catch (error) {
+          const message = document.querySelector("#save-message");
+          message.textContent = error.message;
+          message.classList.add("error");
+        }
+        event.target.value = "";
+      });
+
+      document.querySelector("#tralha-video-upload")?.addEventListener("change", async (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        try {
+          const source = await uploadImage(file, "tralhaTvVideos");
+          const field = document.querySelector('[data-group="tralhaTv"][data-field="videos"]');
+          field.value = `${field.value ? `${field.value}\n` : ""}${file.name.replace(/\.[^.]+$/, "")}|${source}|Novo vídeo da Tralha TV`;
+          field.dispatchEvent(new Event("input", { bubbles: true }));
+          document.querySelector("#save-message").textContent = "Vídeo enviado. Clique em salvar para publicar.";
+        } catch (error) {
+          const message = document.querySelector("#save-message");
+          message.textContent = error.message;
+          message.classList.add("error");
+        }
+        event.target.value = "";
+      });
+
+      function createNoticeFields() {
+        const container = document.querySelector("#notice-fields");
+        container.innerHTML = getData().notices.map((notice, index) => `
+          <div class="editor">
+            <h3>📌 Comunicado ${index + 1}</h3>
+            <div class="editor-grid">
+              <div>
+                <label>Tipo de Comunicado</label>
+                <select data-group="notices" data-index="${index}" data-field="type">
+                  <option ${notice.type === "URGENTE" ? "selected" : ""}>URGENTE</option>
+                  <option ${notice.type === "INFORMATIVO" ? "selected" : ""}>INFORMATIVO</option>
+                  <option ${notice.type === "IMPORTANTE" ? "selected" : ""}>IMPORTANTE</option>
+                </select>
+              </div>
+              <div class="full">
+                <label>Título</label>
+                <input data-group="notices" data-index="${index}" data-field="title" value="${notice.title}">
+              </div>
+              <div class="full">
+                <label>Descrição completa</label>
+                <textarea data-group="notices" data-index="${index}" data-field="description">${notice.description}</textarea>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      function createMenuFields() {
+        const container = document.querySelector("#menu-fields");
+        container.innerHTML = getData().menu.map((item, index) => `
+          <div class="editor">
+            <h3>📅 ${item.day}</h3>
+            <div class="editor-grid">
+              <div class="full">
+                <label>Prato Principal</label>
+                <input data-group="menu" data-index="${index}" data-field="main" value="${item.main}">
+              </div>
+              <div>
+                <label>Café da Manhã</label>
+                <input data-group="menu" data-index="${index}" data-field="breakfast" value="${item.breakfast}">
+              </div>
+              <div>
+                <label>Almoço</label>
+                <input data-group="menu" data-index="${index}" data-field="lunch" value="${item.lunch}">
+              </div>
+              <div>
+                <label>Lanche</label>
+                <input data-group="menu" data-index="${index}" data-field="snack" value="${item.snack}">
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      function fillAllFields() {
+        const data = getData();
+        document.querySelectorAll("[data-group]").forEach((field) => {
+          const group = field.dataset.group;
+          const index = Number(field.dataset.index);
+          const property = field.dataset.field;
+          if (data[group] && data[group][index]) {
+            field.value = data[group][index][property] || "";
+          }
+        });
+        updateNewsPreviews();
+        updateImagePreviews();
+        renderGalleryAdmin();
+      }
+
+      function collectData() {
+        const data = getData();
+        document.querySelectorAll("[data-group]").forEach((field) => {
+          const group = field.dataset.group;
+          const index = Number(field.dataset.index);
+          const property = field.dataset.field;
+          if (data[group] && data[group][index]) {
+            data[group][index][property] = field.value;
+          }
+        });
+        return data;
+      }
+
+      async function showDashboard() {
+        try {
+          await Promise.all([loadPortalData(), loadContactLogs()]);
+          adminGames = await loadAdminGames();
+          document.querySelector("#login-section").classList.add("hidden");
+          document.querySelector("#dashboard").classList.remove("hidden");
+          document.querySelector("#logout").classList.remove("hidden");
+          createNoticeFields();
+          createMenuFields();
+          fillAllFields();
+          setupGameAdmin();
+          setupCollapsibleSections();
+          document.querySelector("#message-logs").classList.remove("hidden");
+          document.querySelector("#activity-logs").classList.remove("hidden");
+          renderContactLogs();
+          await renderActivityLogs();
+        } catch (error) {
+          adminToken = "";
+          sessionStorage.removeItem("mlnewsAdminToken");
+          document.querySelector("#login-message").classList.add("error");
+          document.querySelector("#login-message").textContent = error.message;
+        }
+      }
+
+      document.querySelector("#login-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const username = document.querySelector("#username").value.trim();
+        const password = document.querySelector("#password").value;
+        try {
+          const response = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+          const payload = await response.json();
+          if (!response.ok) throw new Error(payload.error || "Usuário ou senha inválidos.");
+          adminToken = payload.token;
+          sessionStorage.setItem("mlnewsAdminToken", adminToken);
+          sessionStorage.setItem(AUTH_KEY, "true");
+          document.querySelector("#login-message").textContent = "";
+          await showDashboard();
+        } catch (error) {
+          document.querySelector("#login-message").classList.add("error");
+          document.querySelector("#login-message").textContent = `❌ ${error.message}`;
+        }
+      });
+
+      document.querySelector("#save-button").addEventListener("click", async () => {
+        const data = collectData();
+        const msg = document.querySelector("#save-message");
+        try {
+          const payload = await api("/api/content", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data }),
+          });
+          currentData = payload.data;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));
+          msg.textContent = "✓ Alterações publicadas para todos os computadores.";
+          msg.classList.remove("error");
+          await renderActivityLogs();
+          setTimeout(() => { msg.textContent = ""; }, 4000);
+        } catch (error) {
+          msg.textContent = error.message;
+          msg.classList.add("error");
+        }
+      });
+
+      document.querySelector("#logout").addEventListener("click", () => {
+        sessionStorage.removeItem(AUTH_KEY);
+        sessionStorage.removeItem("mlnewsAdminToken");
+        window.location.reload();
+      });
+
+      document.querySelector("#clear-logs").addEventListener("click", async () => {
+        if (!getContactLogs().length) return;
+        if (confirm("Deseja apagar todos os registros de mensagens?")) {
+          try {
+            await api("/api/contact", { method: "DELETE" });
+            contactLogs = [];
+            localStorage.removeItem(CONTACT_LOGS_KEY);
+            renderContactLogs();
+            await renderActivityLogs();
+          } catch (error) { alert(error.message); }
+        }
+      });
+
+      document.querySelector("#refresh-activity").addEventListener("click", renderActivityLogs);
+      document.querySelector("#clear-activity").addEventListener("click", async () => {
+        if (!confirm("Deseja apagar todo o histórico de alterações?")) return;
+        try {
+          await api("/api/audit", { method: "DELETE" });
+          await renderActivityLogs();
+        } catch (error) { alert(error.message); }
+      });
+
+      // Atualizar previews em tempo real
+      document.addEventListener("input", (e) => {
+        if (e.target.dataset.group === "news") {
+          updateNewsPreviews();
+        }
+        if (e.target.dataset.field === "logo" || e.target.dataset.field === "emblem" || e.target.dataset.field === "heroImage" || 
+            e.target.dataset.field === "schoolPhoto" || e.target.dataset.field === "historyPhoto") {
+          updateImagePreviews();
+        }
+      });
+
+      document.querySelectorAll("[data-upload-field], [data-upload-list]").forEach((input) => {
+        input.addEventListener("change", handleImageUpload);
+      });
+
+      if (sessionStorage.getItem(AUTH_KEY) === "true" && adminToken) {
+        showDashboard();
+      }
+    </script>
+  </body>
+</html>

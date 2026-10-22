@@ -1,0 +1,127 @@
+{
+  "news": [
+    {
+      "title": "Mostra Tecnológica",
+      "summary": "Mostra tecnológica 2026, curso técnico em desenvolvimento de sistemas.",
+      "category": "TECNOLOGIA",
+      "date": "31/08/2026"
+    },
+    {
+      "title": "Festival cultural celebra talentos da comunidade escolar",
+      "summary": "Alunos se preparam para uma tarde especial de música, dança e arte.",
+      "category": "CULTURA",
+      "date": "10/09/2024"
+    },
+    {
+      "title": "Colégio conquista destaque no campeonato municipal",
+      "summary": "Nossas equipes representaram a escola com muita dedicação e vitórias.",
+      "category": "ESPORTES",
+      "date": "08/09/2024"
+    }
+  ],
+  "notices": [
+    {
+      "type": "URGENTE",
+      "title": "Reunião de responsáveis do Ensino Fundamental",
+      "description": "Dia 20 de setembro, às 18h30, no auditório principal."
+    },
+    {
+      "type": "INFORMATIVO",
+      "title": "Entrega dos boletins do segundo trimestre",
+      "description": "Os boletins estarão disponíveis a partir de 25 de setembro."
+    },
+    {
+      "type": "INFORMATIVO",
+      "title": "Inscrições para atividades extracurriculares",
+      "description": "Inscrições abertas até o dia 27 de setembro."
+    }
+  ],
+  "menu": [
+    {
+      "day": "SEGUNDA",
+      "main": "Arroz, feijão e frango",
+      "breakfast": "Pão e fruta",
+      "lunch": "Salada e frango",
+      "snack": "Bolo de milho"
+    },
+    {
+      "day": "TERÇA",
+      "main": "Macarrão à bolonhesa",
+      "breakfast": "Leite e biscoito",
+      "lunch": "Macarrão e legumes",
+      "snack": "Sanduíche"
+    },
+    {
+      "day": "QUARTA",
+      "main": "Arroz, feijão e peixe",
+      "breakfast": "Iogurte e fruta",
+      "lunch": "Peixe e purê",
+      "snack": "Vitamina"
+    },
+    {
+      "day": "QUINTA",
+      "main": "Arroz colorido",
+      "breakfast": "Pão com queijo",
+      "lunch": "Arroz e carne",
+      "snack": "Frutas"
+    },
+    {
+      "day": "SEXTA",
+      "main": "Feijoada",
+      "breakfast": "Pão e café",
+      "lunch": "Feijoada completa",
+      "snack": "Doce"
+    }
+  ],
+  "history": [
+    {
+      "eyebrow": "MEMÓRIA E IDENTIDADE",
+      "title": "História do Moysés Lupion",
+      "description": "Fundado em 31 de agosto de 1946, o Colégio Estadual Moysés Lupion nasceu como Ginásio Municipal de Antonina e iniciou suas atividades em 1947. Desde então, construiu uma trajetória marcada pela educação e pela formação de gerações de antoninenses. Em 1952, passou a funcionar em sua atual sede, na Avenida Conde Matarazzo, tornando-se parte importante da história educacional e cultural de Antonina. Em 1991, por iniciativa da própria comunidade, retomou o nome Colégio Estadual Moysés Lupion, que permanece até hoje.",
+      "item1Label": "HISTÓRIA",
+      "item1Text": "Uma trajetória construída ao longo de décadas, marcada pela educação e pela formação de gerações de antoninenses.",
+      "item2Label": "COMUNIDADE",
+      "item2Text": "Um colégio feito por pessoas: estudantes, professores, funcionários, famílias e todos que fazem parte dessa história.",
+      "item3Label": "FUTURO",
+      "item3Text": "Preservar a memória, valorizar o presente e preparar novas gerações para os desafios do futuro."
+    }
+  ],
+  "settings": [
+    {
+      "siteTitle": "ML News - Portal Escolar",
+      "siteSlogan": "Informação, educação e comunidade",
+      "siteDescription": "O canal oficial do Colégio Estadual Moysés Lupion para estudantes, famílias, professores e toda a comunidade."
+    }
+  ],
+  "contact": [
+    {
+      "address": "Avenida Conde Matarazzo, 980, Antonina, Paraná, 83370-000",
+      "phone": "(41) 3432-1117",
+      "email": "aonmoyseslupion@escola.pr.gov.br",
+      "hours": "Segunda a sexta, 7h às 18h"
+    }
+  ],
+  "images": [
+    {
+      "logo": "imagens/logo-ml-news.png",
+      "emblem": "imagens/emblema-ccm.jpg",
+      "heroImage": "imagens/uploads/heroimage-1788194650338-66ac1576.jpg",
+      "schoolPhoto": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80",
+      "historyPhoto": "imagens/uploads/historyphoto-1787536687600-17aa3c9e.webp",
+      "newsImages": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80\nhttps://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80\nhttps://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=700&q=80",
+      "galleryImages": "imagens/uploads/galleryimages-1788194659415-637e88b7.jpeg|EVENTOS\nimagens/uploads/galleryimages-1788194662972-6f2526ec.jpeg|EVENTOS\nimagens/uploads/galleryimages-1788194666287-f9925b5f.jpeg|EVENTOS\nimagens/uploads/galleryimages-1788194672726-c71e195a.jpeg|EVENTOS\nimagens/uploads/galleryimages-1788194677676-1e59ff3a.jpeg|EVENTOS\nimagens/uploads/galleryimages-1788194681621-7352e176.jpeg|EVENTOS"
+    }
+  ],
+  "tralhaTv": [
+    {
+      "eyebrow": "CANAL DOS ESTUDANTES",
+      "title": "Tralha TV",
+      "description": "Conteúdo caótico, autêntico e sem filtro feito pela comunidade estudantil.",
+      "heroImage": "imagens/uploads/tralha-tv/tralha-tv-capa-painel.jpeg",
+      "dogImage": "imagens/uploads/tralha-tv/tralha-tv-pagina-inicial.jpeg",
+      "socials": "instagram|@tralhatv|https://instagram.com/tralhatv\ntiktok|@tralhatv|https://tiktok.com/@tralhatv\nyoutube|/tralhatv|https://youtube.com/@tralhatv\ntwitter|@tralhatv|https://twitter.com/tralhatv",
+      "members": "AnjMelly|imagens/uploads/tralha-tv/annabelly-logo.jpeg\nGabi|imagens/uploads/tralha-tv/tralha-tv-encerramento-01.jpeg\nLyra|imagens/uploads/tralha-tv/lyra-logo.jpeg\nGabe|imagens/uploads/tralha-tv/tralha-tv-encerramento-02.jpeg\nMavi|imagens/uploads/tralha-tv/gabi-logo.jpeg\nDu|imagens/uploads/tralha-tv/alice-logo.jpeg\nAlice|imagens/uploads/tralha-tv/tralha-tv-encerramento-03.jpeg\nDaniel|imagens/uploads/tralha-tv/mavi-logo.jpeg",
+      "videos": "Episódio de estreia|https://www.youtube.com/@tralhatv|Conheça a Tralha TV\nAo vivo|https://www.youtube.com/@tralhatv/live|Acompanhe as novidades"
+    }
+  ]
+}

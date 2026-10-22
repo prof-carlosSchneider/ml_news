@@ -1,0 +1,6 @@
+Executar o seguinte código no WINDOWS POWERSHELL para colocar o site no ar:
+
+cd "C:\Users\bielg\Downloads\MLnews (1)-20260823T213907Z-1-001\MLnews (1)"
+& "C:\Users\bielg\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" server.js
+
+alterar de acordo com o local onde o arquivo está localizado

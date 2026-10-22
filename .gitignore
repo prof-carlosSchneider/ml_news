@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env*.local
+.vercel/
+*.tmp
+*.db
+dados/local.db
+imagens - Copia/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
